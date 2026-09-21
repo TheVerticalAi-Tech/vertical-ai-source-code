@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, useLayoutEffect } from "react";
 import dynamic from "next/dynamic";
 import { Orbitron, Ubuntu } from "next/font/google";
+import OrbDNALoader from "@/components/landing-page/OrbDNALoader";
 
 const orbitron = Orbitron({
   subsets: ["latin"],
@@ -37,6 +38,7 @@ const LandingPageFooter = dynamic(() => import("@/components/landing-page/landin
 const LandingPageClient = () => {
   // UI state
   const [isMounted, setIsMounted] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   // Set mounted state after hydration to prevent hydration mismatches
   // Use requestAnimationFrame to defer non-critical state updates
@@ -68,7 +70,9 @@ const LandingPageClient = () => {
   }, [isMounted]);
 
   return (
-    <div
+    <>
+      {loading && <OrbDNALoader onComplete={() => setLoading(false)} />}
+      <div
       className={`${orbitron.variable} ${ubuntu.variable} relative min-h-screen w-full overflow-x-clip`}
       style={{
         fontFamily: 'var(--font-ubuntu), sans-serif',
@@ -88,6 +92,7 @@ const LandingPageClient = () => {
       <FAQSection />
       <LandingPageFooter />
     </div>
+    </>
   );
 };
 
