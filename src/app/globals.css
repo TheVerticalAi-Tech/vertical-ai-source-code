@@ -301,6 +301,12 @@
   animation: jump 4s ease-in-out infinite;
 }
 
+/* Hide Mozhi default launcher button */
+#mozhi-launcher {
+  display: none !important;
+  pointer-events: none !important;
+}
+
 /* Marquee Animation */
 .animate-marquee {
   animation: marquee 20s linear infinite;

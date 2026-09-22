@@ -19,8 +19,7 @@ const ubuntu = Ubuntu({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: "The Vertical AI - AI-Native Enterprise OS for Conversations",
-  description:
-    "The Vertical AI - AI-Native Enterprise OS for Conversations",
+  description: "The Vertical AI - AI-Native Enterprise OS for Conversations",
 };
 
 export default function RootLayout({
@@ -29,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning> 
+    <html lang="en" suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -41,7 +40,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           }}
         />
         {/* Google tag (gtag.js) */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-8CF8M8RMTB"></script>
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-8CF8M8RMTB"
+        ></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -52,6 +54,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               gtag('config', 'G-8CF8M8RMTB');
             `,
           }}
+        />
+        <script
+          src="https://mozhi.thevertical.ai/embed.js"
+          data-org="07bc955d082f47fba62abe45200e340c"
+          data-agent="7268ff06c1f84938a420046111229f4c"
+          data-accent="#0f172a"
+          async
         />
       </head>
       <body className={`${ubuntu.className} antialiased`}>
@@ -68,9 +77,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             status code before any response bytes are streamed to the client. */}
         {children}
         {/* <ScrollToTop /> */}
-        <Suspense fallback={null}>
-          <ChatbotWidget />
-        </Suspense>
+        <ChatbotWidget />
       </body>
     </html>
   );

@@ -41,6 +41,19 @@ export default function ChatbotWidget() {
 
   useEffect(() => {
     setMounted(true);
+
+    // Find and hide Mozhi's launcher button (it has no id/class, identified by aria-label)
+    const hideMozhiLauncher = () => {
+      const btn = Array.from(document.querySelectorAll<HTMLElement>('button[style*="position:fixed"], button[style*="position: fixed"]'))
+        .find(el => el.style.bottom && el.style.right && el.tagName === 'BUTTON' && !el.getAttribute('aria-label')?.includes('Close'));
+      if (btn) {
+        btn.style.setProperty('display', 'none', 'important');
+      }
+    };
+
+    const observer = new MutationObserver(hideMozhiLauncher);
+    observer.observe(document.body, { childList: true, subtree: true });
+    return () => observer.disconnect();
   }, []);
 
   const handleSetState = (s: 'idle' | 'speaking' | 'thinking' | 'response') => {
@@ -240,9 +253,14 @@ export default function ChatbotWidget() {
       {/* The DNA Orb Container */}
       <motion.div
         onClick={() => {
-          const states: ('idle' | 'speaking' | 'thinking' | 'response')[] = ['idle', 'speaking', 'thinking', 'response'];
-          const nextIndex = (states.indexOf(currentState) + 1) % states.length;
-          handleSetState(states[nextIndex]);
+          // Find Mozhi's launcher button and simulate a click to open/close the chat
+          const btn = Array.from(document.querySelectorAll<HTMLElement>('button[style*="position:fixed"], button[style*="position: fixed"]'))
+            .find(el => el.style.bottom && el.style.right && !el.getAttribute('aria-label')?.includes('Close'));
+          if (btn) {
+            btn.style.removeProperty('display');
+            btn.click();
+            btn.style.setProperty('display', 'none', 'important');
+          }
         }}
         className="orb-container group"
         animate={{ scale: [1, 1.02, 1] }}
