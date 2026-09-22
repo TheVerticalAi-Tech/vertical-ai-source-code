@@ -30,6 +30,26 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <style dangerouslySetInnerHTML={{ __html: `body > button[style*="position:fixed"] { display: none !important; }` }} />
+        <script dangerouslySetInnerHTML={{ __html: `
+          (function() {
+            var _appendChild = Element.prototype.appendChild;
+            var _insertBefore = Element.prototype.insertBefore;
+            function hideMozhiBtn(node) {
+              if (node && node.tagName === 'BUTTON' && node.style && node.style.position === 'fixed') {
+                node.style.setProperty('display', 'none', 'important');
+              }
+            }
+            Element.prototype.appendChild = function(node) {
+              hideMozhiBtn(node);
+              return _appendChild.call(this, node);
+            };
+            Element.prototype.insertBefore = function(node, ref) {
+              hideMozhiBtn(node);
+              return _insertBefore.call(this, node, ref);
+            };
+          })();
+        ` }} />
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
