@@ -74,10 +74,12 @@ function BlogDetailContent() {
 
   useEffect(() => {
     if (!slug) return;
-    fetch(`/api/blogs/${slug}`)
+    fetch(`${process.env.NEXT_PUBLIC_CMS_API_URL}/api/public/blogs`)
       .then((res) => res.json())
       .then((json) => {
-        if (json.success) setData(json.data);
+        const blogs = Array.isArray(json?.blogs) ? json.blogs : [];
+        const blog = blogs.find((b: any) => b.slug === slug) || null;
+        if (blog) setData(blog);
         setLoading(false);
       })
       .catch(() => setLoading(false));

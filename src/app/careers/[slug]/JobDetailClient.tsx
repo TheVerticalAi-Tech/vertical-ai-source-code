@@ -133,11 +133,11 @@ export default function JobDetailClient() {
 
   useEffect(() => {
     setIsLoadingJob(true);
-    fetch("/api/careers")
+    fetch(`${process.env.NEXT_PUBLIC_CMS_API_URL}/api/public/careers`)
       .then((res) => res.json())
       .then((json) => {
-        if (json.success && Array.isArray(json.data)) {
-          const found = json.data.find((j: any) => j.slug === slug);
+        if (Array.isArray(json?.jobs)) {
+          const found = json.jobs.find((j: any) => j.slug === slug);
           setJob(found || null);
         }
       })
@@ -397,7 +397,7 @@ export default function JobDetailClient() {
 
       console.log("Submitting job application...");
 
-      const response = await fetch("/api/apply-job", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_CMS_API_URL}/api/apply-job`, {
         method: "POST",
         body: formData,
       });

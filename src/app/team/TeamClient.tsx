@@ -23,11 +23,11 @@ export default function TeamClient() {
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
 
   useEffect(() => {
-    fetch("/api/team-members")
+    fetch(`${process.env.NEXT_PUBLIC_CMS_API_URL}/api/public/team`)
       .then((res) => res.json())
       .then((json) => {
-        if (json.success) {
-          const mapped: TeamMember[] = json.data.map((m: {
+        const members = Array.isArray(json?.members) ? json.members : [];
+        const mapped: TeamMember[] = members.map((m: {
             id: string;
             name: string;
             role: string;
@@ -45,7 +45,6 @@ export default function TeamClient() {
             socials: { linkedin: m.linkedinUrl, twitter: m.twitterUrl, mail: m.mailTo },
           }));
           setTeamMembers(mapped);
-        }
       })
       .catch(console.error);
   }, []);

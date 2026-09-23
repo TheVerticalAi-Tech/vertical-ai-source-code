@@ -16,11 +16,13 @@ export function usePlatformNavItems(): PlatformNavItem[] {
   const [items, setItems] = useState<PlatformNavItem[]>([]);
 
   useEffect(() => {
-    fetch("/api/platforms")
+    fetch(`${process.env.NEXT_PUBLIC_CMS_API_URL}/api/public/platform-os`)
       .then((res) => res.json())
       .then((json) => {
-        if (json.success) {
-          const mapped: PlatformNavItem[] = json.data.map((p: any) => ({
+        if (Array.isArray(json?.platforms)) {
+          const mapped: PlatformNavItem[] = json.platforms
+            .filter((p: any) => p.status === "published")
+            .map((p: any) => ({
             name: p.name,
             desc: p.heroTitle || "",
             href: `/platform/${p.slug}`,

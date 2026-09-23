@@ -14,16 +14,18 @@ export function useIndustryNavItems(): IndustryNavItem[] {
   const [items, setItems] = useState<IndustryNavItem[]>([]);
 
   useEffect(() => {
-    fetch("/api/industries")
+    fetch(`${process.env.NEXT_PUBLIC_CMS_API_URL}/api/public/industries`)
       .then((res) => res.json())
       .then((json) => {
-        if (json.success) {
+        if (Array.isArray(json?.industries)) {
           setItems(
-            json.data.map((i: any) => ({
-              name: i.name,
-              desc: i.heroDescription || "",
-              href: `/industry/${i.slug}`,
-            }))
+            json.industries
+              .filter((i: any) => i.status === "published")
+              .map((i: any) => ({
+                name: i.name,
+                desc: i.heroDescription || "",
+                href: `/industry/${i.slug}`,
+              }))
           );
         }
       })

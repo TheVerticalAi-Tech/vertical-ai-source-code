@@ -1,69 +1,48 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 import { fetchCmsResource } from "@/lib/cms-api";
 import { SITE_URL } from "@/lib/site";
 import { JsonLd, buildDefaultSchema } from "@/lib/json-ld";
 import BlogDetailClient from "./BlogDetailClient";
 
-async function getPublishedPost(slug: string) {
-  const blogs = await fetchCmsResource("/api/public/blogs", "blogs");
-  const post: any = blogs.find((b: any) => b.slug === slug && b.status === "published");
-  return post || null;
+async function getPost(slug: string) {
+  try {
+    const blogs = await fetchCmsResource("/api/public/blogs", "blogs");
+    return (blogs as any[]).find((b: any) => b.slug === slug && b.status === "published") || null;
+  } catch { return null; }
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
-  const { slug } = await params;
-  const post = await getPublishedPost(slug);
-  if (!post) return {};
+export async function generateStaticParams() {
+  try {
+    const blogs = await fetchCmsResource("/api/public/blogs", "blogs");
+    return (blogs as any[])
+      .filter((b: any) => b.status === "published" && b.slug)
+      .map((b: any) => ({ slug: b.slug }));
+  } catch { return []; }
+}
 
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await getPost(slug);
+  if (!post) return {};
   const title = post.metaTitle || post.title;
   const description = post.metaDescription || post.excerpt;
   const canonical = `${SITE_URL}/blog/${slug}`;
-  const ogTitle = post.ogTitle || title;
-  const ogDescription = post.ogDescription || description;
   const ogImage = post.ogImageUrl || post.bannerUrl;
-  const ogImageAlt = post.ogImageAlt || title;
-
   return {
-    title,
-    description,
+    title, description,
     keywords: post.metaKeywords || undefined,
     alternates: { canonical },
-    openGraph: {
-      title: ogTitle,
-      description: ogDescription,
-      siteName: post.ogSiteName || "The Vertical AI",
-      url: post.ogUrl || canonical,
-      type: (post.ogType || "website") as any,
-      images: ogImage ? [{ url: ogImage, alt: ogImageAlt }] : undefined,
-    },
-    twitter: {
-      title: ogTitle,
-      description: ogDescription,
-      images: ogImage ? [ogImage] : undefined,
-    },
+    openGraph: { title: post.ogTitle || title, description: post.ogDescription || description, siteName: "The Vertical AI", url: canonical, type: "website", images: ogImage ? [{ url: ogImage, alt: post.ogImageAlt || title }] : undefined },
+    twitter: { title: post.ogTitle || title, description: post.ogDescription || description, images: ogImage ? [ogImage] : undefined },
   };
 }
 
-export default async function BlogDetailPage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
+export default async function BlogDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const post = await getPublishedPost(slug);
-
-  if (!post) {
-    notFound();
-  }
-
+  const post = await getPost(slug);
   return (
     <>
-      <JsonLd data={post.schemaMarkup || JSON.stringify(buildDefaultSchema("blog", post))} />
+      {post && <JsonLd data={post.schemaMarkup || JSON.stringify(buildDefaultSchema("blog", post))} />}
       <BlogDetailClient />
     </>
   );

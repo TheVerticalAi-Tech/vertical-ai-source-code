@@ -2,6 +2,8 @@ import type { MetadataRoute } from "next";
 import { fetchCmsResource } from "@/lib/cms-api";
 import { SITE_URL } from "@/lib/site";
 
+export const dynamic = "force-static";
+
 const STATIC_PAGES = [
   "",
   "about-us",

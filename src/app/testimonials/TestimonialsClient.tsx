@@ -21,9 +21,9 @@ export default function TestimonialsClient() {
   const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
 
   useEffect(() => {
-    fetch("/api/testimonials")
+    fetch(`${process.env.NEXT_PUBLIC_CMS_API_URL}/api/public/testimonials`)
       .then((res) => res.json())
-      .then((json) => { if (json.success) setTestimonials(json.data); })
+      .then((json) => { if (Array.isArray(json?.testimonials)) setTestimonials(json.testimonials); })
       .catch(console.error);
   }, []);
 

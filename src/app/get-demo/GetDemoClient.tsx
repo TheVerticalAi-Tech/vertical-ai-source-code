@@ -55,7 +55,7 @@ export default function GetDemoClient() {
 
     try {
       const finalMessage = formData.message === 'Other' ? formData.otherMessage : formData.message;
-      const response = await fetch('/api/get-demo', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_CMS_API_URL}/api/get-demo`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

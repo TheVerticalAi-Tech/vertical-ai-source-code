@@ -22,11 +22,13 @@ function usePlatformServices(): ServiceItem[] {
   const [services, setServices] = useState<ServiceItem[]>([]);
 
   useEffect(() => {
-    fetch("/api/platforms")
+    fetch(`${process.env.NEXT_PUBLIC_CMS_API_URL}/api/public/platform-os`)
       .then((res) => res.json())
       .then((json) => {
-        if (json.success) {
-          const mapped: ServiceItem[] = json.data.map((p: any, i: number) => {
+        if (Array.isArray(json?.platforms)) {
+          const mapped: ServiceItem[] = json.platforms
+            .filter((p: any) => p.status === "published")
+            .map((p: any, i: number) => {
             const subtitle = (p.heroTitle || "").replace(/^The\s+/i, "").replace(/\s+OS$/i, "");
             return {
               id: i + 1,

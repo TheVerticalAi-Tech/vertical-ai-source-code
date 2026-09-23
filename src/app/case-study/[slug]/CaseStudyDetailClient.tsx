@@ -52,11 +52,12 @@ function CaseStudyDetailContent() {
 
   useEffect(() => {
     if (!slug) return;
-    fetch(`/api/case-studies?slug=${encodeURIComponent(slug)}`)
+    fetch(`${process.env.NEXT_PUBLIC_CMS_API_URL}/api/public/case-studies`)
       .then((res) => res.json())
       .then((json) => {
-        if (json.success && json.data?.length > 0) {
-          const cs = json.data[0];
+        const list = Array.isArray(json?.caseStudies) ? json.caseStudies : [];
+        const cs = list.find((c: any) => c.slug === slug && c.status === "published");
+        if (cs) {
           setData({
             title: cs.storyTitle,
             client: cs.breadcrumbTitle,

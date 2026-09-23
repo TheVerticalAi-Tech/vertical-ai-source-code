@@ -77,12 +77,12 @@ export default function CareersClient() {
   const [missions, setMissions] = useState<(CareerItem & { link: string })[]>([]);
 
   React.useEffect(() => {
-    fetch("/api/careers")
+    fetch(`${process.env.NEXT_PUBLIC_CMS_API_URL}/api/public/careers`)
       .then((res) => res.json())
       .then((json) => {
-        if (json.success && Array.isArray(json.data)) {
+        if (Array.isArray(json?.jobs)) {
           setMissions(
-            json.data
+            json.jobs
               .filter((c: CareerItem) => c.status === "published")
               .map((c: CareerItem) => ({ ...c, link: `/careers/${c.slug}` }))
           );

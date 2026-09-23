@@ -67,9 +67,9 @@ export default function AboutUsClient() {
   const [data, setData] = useState<AboutData | null>(null);
 
   useEffect(() => {
-    fetch("/api/about-us")
+    fetch(`${process.env.NEXT_PUBLIC_CMS_API_URL}/api/public/about-us`)
       .then((r) => r.json())
-      .then((json) => { if (json.success) setData(json.data); })
+      .then((json) => { if (json.about) setData(json.about); })
       .catch(() => {});
   }, []);
 

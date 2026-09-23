@@ -23,10 +23,10 @@ export default function WhyUsClient() {
   const [features, setFeatures] = useState<WhyFrameworkCard[]>([]);
 
   useEffect(() => {
-    fetch("/api/why-framework")
+    fetch(`${process.env.NEXT_PUBLIC_CMS_API_URL}/api/public/why-framework`)
       .then((res) => res.json())
       .then((json) => {
-        if (json.success) setFeatures(json.data);
+        if (Array.isArray(json?.frameworks)) setFeatures(json.frameworks);
       })
       .catch(console.error);
   }, []);

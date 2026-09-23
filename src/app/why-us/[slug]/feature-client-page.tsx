@@ -35,11 +35,13 @@ export default function FeatureClientPage({ slug }: { slug: string }) {
   const [notFoundState, setNotFoundState] = useState(false);
 
   useEffect(() => {
-    fetch(`/api/why-framework?slug=${encodeURIComponent(slug)}`)
+    fetch(`${process.env.NEXT_PUBLIC_CMS_API_URL}/api/public/why-framework`)
       .then((res) => res.json())
       .then((json) => {
-        if (json.success && json.data?.length > 0) {
-          setFeature(json.data[0]);
+        const frameworks = Array.isArray(json?.frameworks) ? json.frameworks : [];
+        const found = frameworks.find((f: any) => f.slug === slug) || null;
+        if (found) {
+          setFeature(found);
         } else {
           setNotFoundState(true);
         }

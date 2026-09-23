@@ -7,10 +7,14 @@ export const CMS_API_URL = process.env.CMS_API_URL || "http://localhost:3000";
 // { blogs: [...] }) rather than a common { success, data } shape, and ignores
 // query params like ?slug= — filtering by slug/id is done locally after fetching.
 export async function fetchCmsResource<T = Record<string, unknown>>(path: string, key: string): Promise<T[]> {
-  const res = await fetch(`${CMS_API_URL}${path}`, { cache: "no-store" });
-  if (!res.ok) {
-    throw new Error(`CMS request failed: ${path} (${res.status})`);
+  try {
+    const res = await fetch(`${CMS_API_URL}${path}`, { next: { revalidate: 300 } });
+    if (!res.ok) {
+      throw new Error(`CMS request failed: ${path} (${res.status})`);
+    }
+    const json = await res.json();
+    return Array.isArray(json?.[key]) ? json[key] : [];
+  } catch {
+    return [];
   }
-  const json = await res.json();
-  return Array.isArray(json?.[key]) ? json[key] : [];
 }

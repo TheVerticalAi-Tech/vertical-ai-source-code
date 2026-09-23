@@ -21,9 +21,9 @@ const FAQSection: React.FC = () => {
 
   useEffect(() => {
     setIsMounted(true);
-    fetch('/api/faqs?scopeKey=landing')
+    fetch(`${process.env.NEXT_PUBLIC_CMS_API_URL}/api/public/faqs`)
       .then((res) => res.json())
-      .then((json) => { if (json.success) setFaqs(json.data); })
+      .then((json) => { if (Array.isArray(json?.faqs)) setFaqs(json.faqs.filter((f: FAQItem) => !f.category || f.category === 'landing')); })
       .catch(console.error);
   }, []);
 

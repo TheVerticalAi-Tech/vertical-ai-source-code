@@ -18,9 +18,14 @@ const PlatformIndustryFAQ: React.FC<PlatformIndustryFAQProps> = ({ scopeKey }) =
 
   useEffect(() => {
     if (!scopeKey) return;
-    fetch(`/api/faqs?scopeKey=${scopeKey}`)
+    fetch(`${process.env.NEXT_PUBLIC_CMS_API_URL}/api/public/faqs`)
       .then(res => res.json())
-      .then(json => { if (json.success) setFaqs(json.data); })
+      .then(json => {
+        if (Array.isArray(json?.faqs)) {
+          const filtered = json.faqs.filter((f: FAQItem) => f.scopeKey === scopeKey);
+          setFaqs(filtered);
+        }
+      })
       .catch(console.error);
   }, [scopeKey]);
   const [openIndex, setOpenIndex] = useState<number | null>(0);

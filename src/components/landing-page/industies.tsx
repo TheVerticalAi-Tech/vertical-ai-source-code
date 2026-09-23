@@ -81,11 +81,11 @@ function TechHeadingsSection() {
     const router = useRouter();
 
     useEffect(() => {
-        fetch("/api/industries")
+        fetch(`${process.env.NEXT_PUBLIC_CMS_API_URL}/api/public/industries`)
             .then((res) => res.json())
             .then((json) => {
-                if (json.success) {
-                    const mapped: TechItem[] = json.data.map((row: any, i: number) => ({
+                if (Array.isArray(json?.industries)) {
+                    const mapped: TechItem[] = json.industries.map((row: any, i: number) => ({
                         id: i + 1,
                         label: row.name,
                         counter: String(i + 1).padStart(2, "0"),

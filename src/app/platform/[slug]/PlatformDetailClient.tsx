@@ -36,10 +36,11 @@ function PlatformDetailContent() {
     useEffect(() => {
         setLoading(true);
 
-        fetch(`/api/platforms?slug=${encodeURIComponent(slug)}`)
+        fetch(`${process.env.NEXT_PUBLIC_CMS_API_URL}/api/public/platform-os`)
             .then(res => res.json())
             .then(json => {
-                const row = json?.success ? json.data?.[0] : null;
+                const platforms = Array.isArray(json?.platforms) ? json.platforms : [];
+                const row = platforms.find((p: any) => p.slug === slug) || null;
                 if (row) {
                     setData({
                         hero: {

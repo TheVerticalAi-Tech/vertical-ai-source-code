@@ -54,12 +54,12 @@ export default function BlogClient() {
   const [selectedYear, setSelectedYear] = useState("all-years");
 
   useEffect(() => {
-    fetch("/api/blogs")
+    fetch(`${process.env.NEXT_PUBLIC_CMS_API_URL}/api/public/blogs`)
       .then((res) => res.json())
       .then((json) => {
-        if (json.success && Array.isArray(json.data)) {
+        if (Array.isArray(json?.blogs)) {
           setBlogPosts(
-            json.data
+            json.blogs
               .filter((b: any) => b.status === "published")
               .map((b: any) => ({
                 blogs_id: b.id,

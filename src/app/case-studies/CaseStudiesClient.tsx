@@ -27,11 +27,11 @@ export default function CaseStudiesClient() {
   const [canScrollNext, setCanScrollNext] = useState(false)
 
   useEffect(() => {
-    fetch("/api/case-studies")
+    fetch(`${process.env.NEXT_PUBLIC_CMS_API_URL}/api/public/case-studies`)
       .then((res) => res.json())
       .then((json) => {
-        if (json.success) {
-          const mapped = json.data.map((cs: any) => ({
+        if (Array.isArray(json?.caseStudies)) {
+          const mapped = json.caseStudies.filter((cs: any) => cs.status === "published").map((cs: any) => ({
             slug: cs.slug,
             banner_image_url: cs.headerImageUrl,
             title: cs.storyTitle,
@@ -44,7 +44,7 @@ export default function CaseStudiesClient() {
           }));
           setCaseStudies(mapped);
         } else {
-          setError(json.error || "Failed to load case studies");
+          setError("Failed to load case studies");
         }
         setLoading(false);
       })

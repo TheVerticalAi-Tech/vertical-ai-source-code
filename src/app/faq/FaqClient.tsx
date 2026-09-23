@@ -59,9 +59,9 @@ export default function FaqClient() {
 
   useEffect(() => {
     setIsMounted(true);
-    fetch('/api/faqs')
+    fetch(`${process.env.NEXT_PUBLIC_CMS_API_URL}/api/public/faqs`)
       .then(res => res.json())
-      .then(json => { if (json.success) setAllFaqs(json.data); })
+      .then(json => { if (Array.isArray(json?.faqs)) setAllFaqs(json.faqs.filter((f: any) => f.status === 'published')); })
       .catch(console.error);
   }, []);
 

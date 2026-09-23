@@ -242,9 +242,10 @@ export default function IndustryDetailClient() {
         const fetchIndustryData = async () => {
             setIsLoading(true);
             try {
-                const response = await fetch(`/api/industries?slug=${encodeURIComponent(slug)}`);
+                const response = await fetch(`${process.env.NEXT_PUBLIC_CMS_API_URL}/api/public/industries`);
                 const json = await response.json();
-                const row = json?.success ? json.data?.[0] : null;
+                const industries = Array.isArray(json?.industries) ? json.industries : [];
+                const row = industries.find((i: any) => i.slug === slug) || null;
 
                 if (row) {
                     setPageData({

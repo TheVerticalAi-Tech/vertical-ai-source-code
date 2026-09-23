@@ -78,7 +78,7 @@ export default function SupportClient() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("/api/support", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_CMS_API_URL}/api/support`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
