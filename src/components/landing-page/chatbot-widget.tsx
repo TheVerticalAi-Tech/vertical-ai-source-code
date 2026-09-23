@@ -56,15 +56,39 @@ export default function ChatbotWidget() {
     return () => observer.disconnect();
   }, []);
 
-  const handleSetState = (s: 'idle' | 'speaking' | 'thinking' | 'response') => {
-    stateRef.current = s;
-    setCurrentState(s);
-
-    if (s === 'response' && weavePhaseRef.current === 'idle') {
-      weavePhaseRef.current = 'surge';
-      weaveTurnsRef.current = TURNS;
+  const handleOrbClick = () => {
+    // Load Mozhi script on first click if not already loaded
+    if (!document.querySelector('script[src*="mozhi.thevertical.ai/embed.js"]')) {
+      const script = document.createElement('script');
+      script.src = 'https://mozhi.thevertical.ai/embed.js';
+      script.setAttribute('data-org', '07bc955d082f47fba62abe45200e340c');
+      script.setAttribute('data-agent', '7268ff06c1f84938a420046111229f4c');
+      script.setAttribute('data-accent', '#0f172a');
+      script.async = true;
+      script.onload = () => {
+        // After script loads, find and click the launcher button
+        setTimeout(() => {
+          const btn = Array.from(document.querySelectorAll<HTMLElement>('button[style*="position:fixed"], button[style*="position: fixed"]'))
+            .find(el => el.style.bottom && el.style.right && !el.getAttribute('aria-label')?.includes('Close'));
+          if (btn) {
+            btn.style.removeProperty('display');
+            btn.click();
+            btn.style.setProperty('display', 'none', 'important');
+          }
+        }, 500);
+      };
+      document.body.appendChild(script);
+      return;
     }
-    if (s !== 'response') weavePhaseRef.current = 'idle';
+
+    // Script already loaded — just open/close the chat
+    const btn = Array.from(document.querySelectorAll<HTMLElement>('button[style*="position:fixed"], button[style*="position: fixed"]'))
+      .find(el => el.style.bottom && el.style.right && !el.getAttribute('aria-label')?.includes('Close'));
+    if (btn) {
+      btn.style.removeProperty('display');
+      btn.click();
+      btn.style.setProperty('display', 'none', 'important');
+    }
   };
 
   useEffect(() => {
@@ -252,16 +276,7 @@ export default function ChatbotWidget() {
     <div className="fixed right-4 bottom-4 sm:right-6 sm:bottom-6 z-[60]">
       {/* The DNA Orb Container */}
       <motion.div
-        onClick={() => {
-          // Find Mozhi's launcher button and simulate a click to open/close the chat
-          const btn = Array.from(document.querySelectorAll<HTMLElement>('button[style*="position:fixed"], button[style*="position: fixed"]'))
-            .find(el => el.style.bottom && el.style.right && !el.getAttribute('aria-label')?.includes('Close'));
-          if (btn) {
-            btn.style.removeProperty('display');
-            btn.click();
-            btn.style.setProperty('display', 'none', 'important');
-          }
-        }}
+        onClick={() => handleOrbClick()}
         className="orb-container group"
         animate={{ scale: [1, 1.02, 1] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}

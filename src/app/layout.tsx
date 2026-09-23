@@ -75,13 +75,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             `,
           }}
         />
-        <script
-          src="https://mozhi.thevertical.ai/embed.js"
-          data-org="07bc955d082f47fba62abe45200e340c"
-          data-agent="7268ff06c1f84938a420046111229f4c"
-          data-accent="#0f172a"
-          async
-        />
       </head>
       <body className={`${ubuntu.className} antialiased`}>
         <noscript>
