@@ -1,0 +1,28 @@
+RewriteEngine On
+RewriteBase /
+
+# These exported pages also have same-named directories for nested pages or
+# images. Resolve each page URL before Apache treats it as a directory.
+RewriteRule ^(blog|careers|team|why-us)/?$ $1.html [L]
+
+# Keep Next.js assets and file requests unchanged.
+RewriteCond %{REQUEST_URI} ^/_next/ [OR]
+RewriteCond %{REQUEST_URI} \.(?:css|js|mjs|map|jpg|jpeg|png|gif|webp|avif|svg|ico|woff|woff2|ttf|otf|txt|xml|json|webmanifest)$
+RewriteRule ^ - [L]
+
+# Serve files directly. Do not skip directories here: a route such as /team
+# may also have a same-named directory containing public images.
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+# Resolve extensionless routes to their exported HTML files before Apache
+# treats same-named directories as directory URLs.
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+?)/?$ $1.html [L]
+
+# Unknown paths use the exported 404 page.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ 404.html [L]
+
+DirectoryIndex index.html

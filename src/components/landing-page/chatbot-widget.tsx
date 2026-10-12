@@ -273,7 +273,17 @@ export default function ChatbotWidget() {
   if (!mounted) return null;
 
   return (
-    <div className="fixed right-4 bottom-4 sm:right-6 sm:bottom-6 z-[60]">
+    <div className="fixed right-4 bottom-4 sm:right-6 sm:bottom-6 z-[60] flex flex-col items-center gap-2">
+      <a
+        href="https://wa.me/918071579670"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat with us on WhatsApp"
+        className="h-9 w-9 rounded-full bg-white p-0.5 shadow-md transition-transform hover:scale-105"
+      >
+        <img src="/images/whatsapp.png" alt="" className="h-full w-full object-contain" />
+      </a>
+
       {/* The DNA Orb Container */}
       <motion.div
         onClick={() => handleOrbClick()}
