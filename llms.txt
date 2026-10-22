@@ -1,0 +1,63 @@
+# The Vertical AI
+
+> The Vertical AI builds an AI-native enterprise operating system for voice, chat and workflow agents in regulated industries. It runs on VeloxCore, a low-latency inference engine (sub-500ms responses) that can be deployed in private cloud, on-premise or air-gapped environments. Its agents handle collections, sales, support and compliance conversations in 36+ languages, with RBI, DPDP, GDPR and HIPAA-aligned governance.
+
+Key facts:
+
+- Company: The Vertical AI (website: thevertical.ai)
+- Headquarters: 513B, 5th Floor, Phase II, 769 Spencer Plaza, Anna Salai, Chennai, Tamil Nadu 600002, India
+- Contact: info@thevertical.ai, +91 70921 16868
+- Customers named on the website: Kotak Mahindra Bank, Bajaj Finserv, TVS Credit, DRA Homes, SMK MG
+- Main use cases: loan collections and EMI reminders, lead response and qualification, customer support, call auditing, AI compliance
+- Industries served: banking and BFSI, microfinance, automotive, BPO, telecom, EdTech, healthcare, ecommerce, travel and hospitality, HR and recruitment
+- Leadership background: founders from IIM Calcutta and Kellogg with 18+ years of scaling businesses
+
+## Platform
+
+- [Mozhi OS: AI Voice Agents](https://thevertical.ai/platform/mozhi): Human-like AI voice agents for inbound and outbound collections, sales and support calls. Sub-500ms latency, 36+ languages, RBI and GDPR compliant.
+- [Conversa OS: AI Chat Agents](https://thevertical.ai/platform/conversa): AI chat agents on WhatsApp, web and in-app that run workflows, not just replies. 36+ languages including Indian regional languages, with human handover and audit trails.
+- [CLEO: AI Lead Response and CRM Automation](https://thevertical.ai/platform/cleo): Replies to every inbound lead in seconds, qualifies it, books the meeting and updates the CRM automatically. Built for real estate and BFSI sales teams.
+- [Maestro: AI Agent Orchestration](https://thevertical.ai/platform/maestro): Orchestrates AI agents, human teams and legacy systems with policy-driven control. 100+ integrations, 1M+ events per day, full auditability.
+- [Insights OS: Conversation Intelligence](https://thevertical.ai/platform/insights): Audits 100% of calls, not a sample. Scores every conversation for quality, intent, sentiment and compliance with real-time dashboards.
+- [Guardian OS: AI Compliance and Audit](https://thevertical.ai/platform/guardian): Enforces compliance before an AI agent acts. Real-time PII scrubbing, policy enforcement and continuous auditing aligned to RBI, DPDP, SOC 2 and HIPAA.
+
+## Industries
+
+- [AI for Banking and BFSI](https://thevertical.ai/industry/bfsi): AI voice and chat agents for banks and NBFCs: compliant collections, EMI reminders, KYC and sales in 36+ languages.
+- [AI for Microfinance](https://thevertical.ai/industry/microfinance): Vernacular AI voice agents for microfinance institutions and NBFC-MFIs: EMI reminders, repayment follow-ups and re-loan campaigns. RBI and MFIN-aligned, on-premise ready.
+- [AI for Automotive Dealerships](https://thevertical.ai/industry/automotive): Answers every dealership call, qualifies leads and books test drives and service slots 24/7. Multilingual and CRM-integrated.
+- [AI for BPOs and Contact Centres](https://thevertical.ai/industry/bpo): Voice and chat agents that absorb tier-1 call volume, automate QA on 100% of calls and support multi-client compliance.
+- [AI for Telecom and ISPs](https://thevertical.ai/industry/telecom): Agents for billing queries, recharge and bill reminders, plan changes, KYC re-verification, outage updates and churn-save calls.
+- [AI for EdTech Admissions](https://thevertical.ai/industry/edtech): Calls every student enquiry in seconds, qualifies intent, books counselling sessions and demo classes, and runs fee reminders.
+- [AI for Healthcare](https://thevertical.ai/industry/healthcare): Voice agents for hospitals, clinics and diagnostic chains: appointment scheduling, reminders and patient queries with HIPAA-aligned auditing and on-premise deployment.
+- [AI for Ecommerce and D2C](https://thevertical.ai/industry/ecommerce): Automates order-status queries, returns, COD confirmation, address verification, NDR recovery and cart recovery across voice and chat.
+- [AI for Travel and Hospitality](https://thevertical.ai/industry/travel): Agents for bookings, changes, cancellations and guest service, connected to reservation systems, in 36+ languages.
+- [AI for HR and Recruitment](https://thevertical.ai/industry/hr-services): Voice and chat agents for high-volume hiring: applicant screening calls, interview scheduling and joining follow-ups. ATS-integrated and multilingual.
+
+## Why The Vertical AI
+
+- [Why The Vertical AI](https://thevertical.ai/why-us/): Overview of the core pillars behind the platform's enterprise-trust architecture.
+- [Platform Architecture](https://thevertical.ai/why-us/architecture): How VeloxCore, Maestro, Guardian and Insights fit together to run enterprise AI.
+- [Enterprise AI OS Framework](https://thevertical.ai/why-us/framework): The framework for integrating legacy systems, orchestrating AI agents and deploying under compliance controls.
+- [Compliance](https://thevertical.ai/why-us/compliance): How the platform handles sovereign data policy and RBI, DPDP, SOC 2 and HIPAA requirements for regulated industries.
+- [Security](https://thevertical.ai/why-us/security): Enterprise security: AES-256 encryption, real-time PII scrubbing, zero-trust APIs, role-based access and secure LLM deployment.
+- [Philosophy](https://thevertical.ai/why-us/philosophy): The company's view on replacing fragmented AI tools with one unified, production-ready enterprise operating system.
+- [Case Studies](https://thevertical.ai/case-studies): Results from AI deployments across BFSI, BPO and enterprise operations.
+- [Testimonials](https://thevertical.ai/testimonials): What enterprise clients say about deploying The Vertical AI.
+
+## Company
+
+- [About Us](https://thevertical.ai/about-us): Who The Vertical AI is and what it is building.
+- [Leadership Team](https://thevertical.ai/team): The founders, engineers and enterprise architects behind the platform.
+- [Support and Contact](https://thevertical.ai/support): Contact details and support requests for technical, billing and account questions.
+- [Book a Demo](https://thevertical.ai/get-demo): Request a personalised demo, pricing and implementation timelines.
+
+## Resources
+
+- [FAQ](https://thevertical.ai/faq): Common questions about the platform, legacy integration, compliance, deployment speed and security.
+- [Blog and Insights](https://thevertical.ai/blog): Articles on enterprise AI, AI orchestration, legacy system integration and conversational AI.
+
+## Optional
+
+- [Careers](https://thevertical.ai/careers): Open roles in AI engineering, enterprise sales and product development.
+- [Privacy Policy](https://thevertical.ai/privacy-policy): How The Vertical AI collects, uses and protects personal data.

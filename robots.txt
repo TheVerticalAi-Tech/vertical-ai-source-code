@@ -1,0 +1,67 @@
+# robots.txt for https://thevertical.ai
+# Updated: 17 Oct 2026
+#
+# AI policy files:
+# LLM site summary:        https://thevertical.ai/llms.txt
+# AI training permissions: https://thevertical.ai/ai.txt
+
+# ---------- Default: all crawlers ----------
+User-agent: *
+Allow: /
+
+# ---------- Search engines (also feed AI answers) ----------
+# Googlebot powers Google Search, AI Overviews and AI Mode
+User-agent: Googlebot
+Allow: /
+
+# Bingbot powers Bing, Microsoft Copilot and parts of ChatGPT search
+User-agent: Bingbot
+Allow: /
+
+# ---------- AI search and retrieval bots (needed to be cited) ----------
+# OpenAI: ChatGPT search results
+User-agent: OAI-SearchBot
+Allow: /
+
+# OpenAI: pages a ChatGPT user asks it to open
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic: Claude search results
+User-agent: Claude-SearchBot
+Allow: /
+
+# Anthropic: pages a Claude user asks it to open
+User-agent: Claude-User
+Allow: /
+
+# Perplexity: search index
+User-agent: PerplexityBot
+Allow: /
+
+# Perplexity: pages a user asks it to open
+User-agent: Perplexity-User
+Allow: /
+
+# ---------- AI training bots (brand knowledge inside AI models) ----------
+# OpenAI model training
+User-agent: GPTBot
+Allow: /
+
+# Anthropic model training
+User-agent: ClaudeBot
+Allow: /
+
+# Google Gemini training (does not affect Search or AI Overviews)
+User-agent: Google-Extended
+Allow: /
+
+# Apple Intelligence training
+User-agent: Applebot-Extended
+Allow: /
+
+# Common Crawl, used by many AI models
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://thevertical.ai/sitemap.xml

@@ -1,0 +1,49 @@
+# ai.txt for https://thevertical.ai
+# AI training and data-use permissions (Spawning ai.txt format)
+# Updated: 17 Oct 2026
+#
+# Policy: text content may be used by AI systems for training, search and answers.
+# Images, video and audio are excluded: they include client logos (third-party
+# trademarks) and licensed stock media that The Vertical AI does not own.
+#
+# Crawler access rules:  https://thevertical.ai/robots.txt
+# Site summary for LLMs: https://thevertical.ai/llms.txt
+# Contact:               info@thevertical.ai
+
+User-Agent: *
+
+# ---------- Allowed: website text and documents ----------
+Allow: /
+Allow: *.html
+Allow: *.htm
+Allow: *.txt
+Allow: *.md
+Allow: *.pdf
+Allow: *.json
+
+# ---------- Not allowed: images ----------
+Disallow: *.jpg
+Disallow: *.jpeg
+Disallow: *.png
+Disallow: *.gif
+Disallow: *.webp
+Disallow: *.avif
+Disallow: *.svg
+Disallow: *.ico
+Disallow: *.bmp
+Disallow: *.tif
+Disallow: *.tiff
+
+# ---------- Not allowed: video ----------
+Disallow: *.mp4
+Disallow: *.webm
+Disallow: *.mov
+Disallow: *.avi
+Disallow: *.mkv
+
+# ---------- Not allowed: audio ----------
+Disallow: *.mp3
+Disallow: *.wav
+Disallow: *.ogg
+Disallow: *.m4a
+Disallow: *.flac
