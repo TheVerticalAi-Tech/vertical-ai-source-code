@@ -86,9 +86,9 @@ export default function ChatbotWidget() {
     ) {
       const script = document.createElement("script");
       script.src = "https://mozhi.thevertical.ai/embed.js";
-      script.setAttribute("data-org", "07bc955d082f47fba62abe45200e340c");
-      script.setAttribute("data-agent", "7268ff06c1f84938a420046111229f4c");
-      script.setAttribute("data-accent", "#0f172a");
+      script.setAttribute("data-org", "c2ed99cc20f44a1c8b272d6be3a853fe");
+      script.setAttribute("data-agent", "d7d30ede4fe544fe9acd90734b6c9f6c");
+      script.setAttribute("data-accent", "#1f3f74");
       script.async = true;
       script.onload = () => {
         // After script loads, find and click the launcher button
