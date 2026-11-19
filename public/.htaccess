@@ -33,9 +33,10 @@ RewriteRule ^platform-detail$ /platform/conversa? [R=301,L]
 RewriteCond %{QUERY_STRING} ^slug=([a-z-]+)$
 RewriteRule ^platform-detail$ /platform/%1? [R=301,L]
 
-# Unknown paths use the exported 404 page.
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^ 404.html [L]
+# /_not-found → real 404
+RewriteRule ^_not-found$ - [R=404,L]
 
 DirectoryIndex index.html
+
+# Real 404 for unknown paths.
+ErrorDocument 404 /404.html
