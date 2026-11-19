@@ -20,18 +20,39 @@ RewriteRule ^ - [L]
 RewriteCond %{REQUEST_FILENAME}.html -f
 RewriteRule ^(.+?)/?$ $1.html [L]
 
-# DT-02 redirects
+# DT-03 redirects (supersedes DT-02)
+# Force HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# Legacy platform/industry slug-less routes
+RedirectMatch 301 ^/platform-detail/?$ /platform
+RedirectMatch 301 ^/industry-detail/?$ /industry
+
+# Platform renames and legacy path prefixes
 RedirectMatch 301 ^/platform/vocalis$ /platform/conversa
 RedirectMatch 301 ^/platform-os/vocalis$ /platform/conversa
 RedirectMatch 301 ^/platform-os/(.+)$ /platform/$1
+
+# Legacy /industries/ → /industry/
 RedirectMatch 301 ^/industries/(.+)$ /industry/$1
+
+# Legacy /solutions/ → /industry/ (known mappings)
 RedirectMatch 301 ^/solutions/(automotive|edtech|travel|healthcare)$ /industry/$1
 RedirectMatch 410 ^/solutions/realestate$
+
+# Legacy career URL
 RedirectMatch 301 ^/careers/software-engineer$ /careers
+
+# Legacy ?slug= query-string platform-detail URLs
 RewriteCond %{QUERY_STRING} ^slug=vocalis$
 RewriteRule ^platform-detail$ /platform/conversa? [R=301,L]
 RewriteCond %{QUERY_STRING} ^slug=([a-z-]+)$
 RewriteRule ^platform-detail$ /platform/%1? [R=301,L]
+
+# Legacy ?slug= query-string industry-detail URLs
+RewriteCond %{QUERY_STRING} ^slug=([a-z-]+)$
+RewriteRule ^industry-detail$ /industry/%1? [R=301,L]
 
 # /_not-found → real 404
 RewriteRule ^_not-found$ - [R=404,L]

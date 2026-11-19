@@ -47,25 +47,25 @@ import { motion, AnimatePresence } from 'framer-motion';
 import logo from '@/assets/logo.png';
 
 export const navAIAgents = [
-    { name: "Maestro", desc: "Orchestration Brain", href: "/platform-detail", icon: Brain },
-    { name: "Vocalis", desc: "Human-like Voice Agents", href: "/platform-detail", icon: Mic2 },
-    { name: "Guardian", desc: "Compliance & Audit Agents", href: "/platform-detail", icon: ShieldCheck },
-    { name: "Insights", desc: "Analytics & Intelligence Agents", href: "/platform-detail", icon: BarChart3 },
-    { name: "Conversa", desc: "Intelligent Chat Agents", href: "/platform-detail", icon: MessagesSquare }
+    { name: "Maestro", desc: "Orchestration Brain", href: "/platform/maestro", icon: Brain },
+    { name: "Vocalis", desc: "Human-like Voice Agents", href: "/platform/conversa", icon: Mic2 },
+    { name: "Guardian", desc: "Compliance & Audit Agents", href: "/platform/guardian", icon: ShieldCheck },
+    { name: "Insights", desc: "Analytics & Intelligence Agents", href: "/platform/insights", icon: BarChart3 },
+    { name: "Conversa", desc: "Intelligent Chat Agents", href: "/platform/conversa", icon: MessagesSquare }
 ];
 
 export const navIndustries = [
-    { name: "BFSI", desc: "Banking, Financial Services & Insurance", icon: Landmark, href: "/industry-detail" },
-    { name: "Healthcare", desc: "Patient care & medical automation", icon: Activity, href: "/industry-detail" },
-    { name: "Telecom", desc: "Customer support & network insights", icon: PhoneCall, href: "/industry-detail" },
-    { name: "E-commerce", desc: "Personalized shopping experiences", icon: ShoppingBag, href: "/industry-detail" },
-    { name: "Real Estate", desc: "Property management & lead gen", icon: Home, href: "/industry-detail" },
-    { name: "Automotive", desc: "Smart dealership & service agents", icon: Car, href: "/industry-detail" },
-    { name: "EdTech", desc: "Adaptive learning & student support", icon: BookOpen, href: "/industry-detail" },
-    { name: "BPO", desc: "Scaled operational efficiency", icon: Headset, href: "/industry-detail" },
-    { name: "Microfinance", desc: "Inclusive financial technology", icon: Coins, href: "/industry-detail" },
-    { name: "Travel", desc: "Itinerary planning & booking bots", icon: Plane, href: "/industry-detail" },
-    { name: "HR Services", desc: "Automated recruitment & onboarding", icon: UserPlus, href: "/industry-detail" },
+    { name: "BFSI", desc: "Banking, Financial Services & Insurance", icon: Landmark, href: "/industry/bfsi" },
+    { name: "Healthcare", desc: "Patient care & medical automation", icon: Activity, href: "/industry/healthcare" },
+    { name: "Telecom", desc: "Customer support & network insights", icon: PhoneCall, href: "/industry/telecom" },
+    { name: "E-commerce", desc: "Personalized shopping experiences", icon: ShoppingBag, href: "/industry/e-commerce" },
+    { name: "Real Estate", desc: "Property management & lead gen", icon: Home, href: "/industry/real-estate" },
+    { name: "Automotive", desc: "Smart dealership & service agents", icon: Car, href: "/industry/automotive" },
+    { name: "EdTech", desc: "Adaptive learning & student support", icon: BookOpen, href: "/industry/edtech" },
+    { name: "BPO", desc: "Scaled operational efficiency", icon: Headset, href: "/industry/bpo" },
+    { name: "Microfinance", desc: "Inclusive financial technology", icon: Coins, href: "/industry/microfinance" },
+    { name: "Travel", desc: "Itinerary planning & booking bots", icon: Plane, href: "/industry/travel" },
+    { name: "HR Services", desc: "Automated recruitment & onboarding", icon: UserPlus, href: "/industry/hr-services" },
 ];
 
 export const navWhyVerticalAI = [
