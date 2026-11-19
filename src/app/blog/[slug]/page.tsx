@@ -43,7 +43,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
   return (
     <>
       {post && <JsonLd data={post.schemaMarkup || JSON.stringify(buildDefaultSchema("blog", post))} />}
-      <BlogDetailClient />
+      <BlogDetailClient initialData={post} />
     </>
   );
 }

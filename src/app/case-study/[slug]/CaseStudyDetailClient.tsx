@@ -1,7 +1,5 @@
 "use client";
 
-import { useParams } from "next/navigation";
-import { useEffect, useState, Suspense } from "react";
 import Header from "@/components/landing-page/header";
 import LandingPageFooter from "@/components/landing-page/landing-page-footer";
 import { CheckCircle2, TrendingUpIcon, Activity, ChevronRight, ArrowRight, Clock, Globe, Shield } from "lucide-react";
@@ -44,41 +42,20 @@ function renderSection(section: CaseStudySection, index: number) {
   );
 }
 
-function CaseStudyDetailContent() {
-  const params = useParams();
-  const slug = params.slug as string;
-  const [data, setData] = useState<any>(null);
-  const [notFound, setNotFound] = useState(false);
+function CaseStudyDetailContent({ initialData }: { initialData: any }) {
+  if (!initialData) return <div className="py-32 text-center text-xl text-gray-600">Case study not found.</div>;
 
-  useEffect(() => {
-    if (!slug) return;
-    fetch(`${process.env.NEXT_PUBLIC_CMS_API_URL}/api/public/case-studies`)
-      .then((res) => res.json())
-      .then((json) => {
-        const list = Array.isArray(json?.caseStudies) ? json.caseStudies : [];
-        const cs = list.find((c: any) => c.slug === slug && c.status === "published");
-        if (cs) {
-          setData({
-            title: cs.storyTitle,
-            client: cs.breadcrumbTitle,
-            industry: cs.categoryBadge,
-            banner: cs.headerImageUrl,
-            mainHeading: cs.mainHeading,
-            testimonialQuote: cs.testimonialQuote,
-            metrics: cs.keyResults || [],
-            implementationSteps: cs.implementationSteps || [],
-            sections: cs.sections || [],
-          });
-        } else {
-          setNotFound(true);
-        }
-      })
-      .catch(() => setNotFound(true));
-  }, [slug]);
-
-  if (!slug) return <div className="py-32 text-center text-xl text-gray-600">No case study specified.</div>;
-  if (notFound) return <div className="py-32 text-center text-xl text-gray-600">Case study not found.</div>;
-  if (!data) return <div className="py-32 text-center text-xl text-gray-600">Loading case study details...</div>;
+  const data = {
+    title: initialData.storyTitle,
+    client: initialData.breadcrumbTitle,
+    industry: initialData.categoryBadge,
+    banner: initialData.headerImageUrl,
+    mainHeading: initialData.mainHeading,
+    testimonialQuote: initialData.testimonialQuote,
+    metrics: initialData.keyResults || [],
+    implementationSteps: initialData.implementationSteps || [],
+    sections: initialData.sections || [],
+  };
 
   return (
       <main className="max-w-6xl mx-auto px-4 md:px-6 pt-24 md:pt-32 pb-16 md:pb-24 grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-12">
@@ -158,15 +135,11 @@ function CaseStudyDetailContent() {
   );
 }
 
-export default function CaseStudyDetailClient() {
+export default function CaseStudyDetailClient({ initialData }: { initialData: any }) {
   return (
     <div className="min-h-screen bg-white">
       <Header visible={true} />
-
-      <Suspense fallback={<div className="min-h-screen bg-white flex items-center justify-center">Loading...</div>}>
-        <CaseStudyDetailContent />
-      </Suspense>
-
+      <CaseStudyDetailContent initialData={initialData} />
       <LandingPageFooter />
     </div>
   );

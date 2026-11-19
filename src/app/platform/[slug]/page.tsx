@@ -43,7 +43,7 @@ export default async function PlatformDetailPage({ params }: { params: Promise<{
   return (
     <>
       {row && <JsonLd data={row.schemaMarkup || JSON.stringify(buildDefaultSchema("platform", row))} />}
-      <PlatformDetailClient />
+      <PlatformDetailClient initialData={row} />
     </>
   );
 }

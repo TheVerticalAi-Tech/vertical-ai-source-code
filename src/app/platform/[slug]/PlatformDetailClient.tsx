@@ -16,7 +16,7 @@ import {
     Award,
     Globe,
 } from "lucide-react";
-import { useRouter, useParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Header from "@/components/landing-page/header";
 import LandingPageFooter from "@/components/landing-page/landing-page-footer";
@@ -26,87 +26,11 @@ import PlatformIndustryFAQ from "@/components/landing-page/platform-industry-faq
 import TestimonialV3 from "@/components/landing-page/testimonial-v3";
 
 
-function PlatformDetailContent() {
+function PlatformDetailContent({ initialData }: { initialData: any }) {
     const router = useRouter();
-    const params = useParams();
-    const slug = params.slug as string;
-    const [data, setData] = useState<any>(null);
-    const [loading, setLoading] = useState(true);
+    const slug = initialData?.slug as string;
 
-    useEffect(() => {
-        setLoading(true);
-
-        fetch(`${process.env.NEXT_PUBLIC_CMS_API_URL}/api/public/platform-os`)
-            .then(res => res.json())
-            .then(json => {
-                const platforms = Array.isArray(json?.platforms) ? json.platforms : [];
-                const row = platforms.find((p: any) => p.slug === slug) || null;
-                if (row) {
-                    setData({
-                        hero: {
-                            title: row.heroTitle,
-                            titleHighlight: row.heroTitleHighlight,
-                            description: row.heroDescription,
-                            image: row.heroImageUrl,
-                        },
-                        trustedClients: {
-                            description: row.clientsDescription,
-                            logos: row.clientLogos || [],
-                        },
-                        howItWorks: {
-                            title: row.whyTitle,
-                            titleHighlight: row.whyTitleHighlight,
-                            description: row.whyDescription,
-                            steps: row.whySteps || [],
-                        },
-                        intelligenceLayer: {
-                            title: row.intelTitle,
-                            titleHighlight: row.intelTitleHighlight,
-                            description: row.intelDescription,
-                            steps: row.intelSteps || [],
-                        },
-                        useCases: {
-                            sectionTitle: row.useCasesTitle,
-                            sectionTitleHighlight: row.useCasesTitleHighlight,
-                            cards: row.useCasesCards || [],
-                        },
-                        measurableImpact: {
-                            sectionTitle: row.impactTitle,
-                            sectionTitleHighlight: row.impactTitleHighlight,
-                            stats: row.impactMetrics || [],
-                        },
-                        securityCompliance: {
-                            sectionTitle: row.securityTitle,
-                            sectionTitleHighlight: row.securityTitleHighlight,
-                            description: row.securityDescription,
-                            features: row.securityFeatures || [],
-                            gridItems: (row.securityGridItems || []).map((title: string) => ({ title })),
-                        },
-                        cta: {
-                            title: row.ctaTitle,
-                            titleHighlight: row.ctaTitleHighlight,
-                        },
-                    });
-                } else {
-                    setData(null);
-                }
-            })
-            .catch(err => console.error("Error fetching platform data:", err))
-            .finally(() => setLoading(false));
-    }, [slug]);
-
-    if (loading) {
-        return (
-            <div className="min-h-screen flex flex-col bg-white">
-                <Header />
-                <div className="flex-1 flex items-center justify-center min-h-[60vh]">
-                    <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
-                </div>
-            </div>
-        );
-    }
-
-    if (!data) {
+    if (!initialData) {
         return (
             <div className="min-h-screen flex flex-col bg-white">
                 <Header />
@@ -116,6 +40,52 @@ function PlatformDetailContent() {
             </div>
         );
     }
+
+    const data = {
+        hero: {
+            title: initialData.heroTitle,
+            titleHighlight: initialData.heroTitleHighlight,
+            description: initialData.heroDescription,
+            image: initialData.heroImageUrl,
+        },
+        trustedClients: {
+            description: initialData.clientsDescription,
+            logos: initialData.clientLogos || [],
+        },
+        howItWorks: {
+            title: initialData.whyTitle,
+            titleHighlight: initialData.whyTitleHighlight,
+            description: initialData.whyDescription,
+            steps: initialData.whySteps || [],
+        },
+        intelligenceLayer: {
+            title: initialData.intelTitle,
+            titleHighlight: initialData.intelTitleHighlight,
+            description: initialData.intelDescription,
+            steps: initialData.intelSteps || [],
+        },
+        useCases: {
+            sectionTitle: initialData.useCasesTitle,
+            sectionTitleHighlight: initialData.useCasesTitleHighlight,
+            cards: initialData.useCasesCards || [],
+        },
+        measurableImpact: {
+            sectionTitle: initialData.impactTitle,
+            sectionTitleHighlight: initialData.impactTitleHighlight,
+            stats: initialData.impactMetrics || [],
+        },
+        securityCompliance: {
+            sectionTitle: initialData.securityTitle,
+            sectionTitleHighlight: initialData.securityTitleHighlight,
+            description: initialData.securityDescription,
+            features: initialData.securityFeatures || [],
+            gridItems: (initialData.securityGridItems || []).map((title: string) => ({ title })),
+        },
+        cta: {
+            title: initialData.ctaTitle,
+            titleHighlight: initialData.ctaTitleHighlight,
+        },
+    };
 
     return (
         <div className="min-h-screen bg-white text-black">
@@ -563,10 +533,10 @@ function PlatformDetailContent() {
     );
 }
 
-export default function PlatformDetailClient() {
+export default function PlatformDetailClient({ initialData }: { initialData: any }) {
     return (
         <Suspense fallback={<div className="min-h-screen bg-white" />}>
-            <PlatformDetailContent />
+            <PlatformDetailContent initialData={initialData} />
         </Suspense>
     );
 }

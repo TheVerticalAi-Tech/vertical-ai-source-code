@@ -4,7 +4,7 @@
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { motion, useInView, useSpring, useTransform, useScroll, AnimatePresence, useMotionValue } from "framer-motion";
-import { useRouter, useParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Header from "@/components/landing-page/header";
 import LandingPageFooter from "@/components/landing-page/landing-page-footer";
 import OtherFeatures from "@/components/landing-page/other-features";
@@ -231,130 +231,99 @@ function TransformationFunnel({ data }: { data?: any }) {
     );
 }
 
-export default function IndustryDetailClient() {
+export default function IndustryDetailClient({ initialData }: { initialData: any }) {
     const router = useRouter();
-    const params = useParams();
-    const slug = params.slug as string;
-    const [pageData, setPageData] = useState<any>(null);
-    const [isLoading, setIsLoading] = useState(true);
+    const slug = initialData?.slug as string;
 
-    useEffect(() => {
-        const fetchIndustryData = async () => {
-            setIsLoading(true);
-            try {
-                const response = await fetch(`${process.env.NEXT_PUBLIC_CMS_API_URL}/api/public/industries`);
-                const json = await response.json();
-                const industries = Array.isArray(json?.industries) ? json.industries : [];
-                const row = industries.find((i: any) => i.slug === slug) || null;
-
-                if (row) {
-                    setPageData({
-                        industry_name: row.name,
-                        hero: {
-                            title: row.heroTitle,
-                            titleHighlight: row.heroTitleHighlight,
-                            description: row.heroDescription,
-                            descriptionHighlight: row.heroDescriptionHighlight,
-                            image: row.heroImageUrl,
-                        },
-                        trustedLogos: row.trustedLogos || [],
-                        otherFeatures: {
-                            title: row.featuresTitle,
-                            titleHighlight: row.featuresTitleHighlight,
-                            description: row.featuresDescription,
-                            features: row.featureCards || [],
-                        },
-                        transformationFunnel: {
-                            items: row.transformationLegacy || [],
-                            outcomes: row.transformationOutcomes || [],
-                        },
-                        caseStudy: {
-                            title: row.caseStudy?.title,
-                            titleHighlight: row.caseStudy?.titleHighlight,
-                            challenge: row.caseStudy?.challenge,
-                            solution: row.caseStudy?.solution,
-                            image: row.caseStudy?.image || row.caseStudy?.imageUrl,
-                            results: row.caseStudy?.results || row.caseStudy?.bulletResults || [],
-                        },
-                        verticalProduct: {
-                            title: row.pillarsTitle,
-                            titleHighlight: row.pillarsTitleHighlight,
-                            subtitle: row.pillarsSubtitle,
-                            pillars: row.productPillars || [],
-                        },
-                        agentMapping: {
-                            title: row.agentsTitle,
-                            titleHighlight: row.agentsTitleHighlight,
-                            agents: (row.agentCards || []).map((a: any) => ({
-                                title: a.title || a.name,
-                                subtitle: a.subtitle || a.tagline,
-                                bullets: a.bullets || a.bulletPoints || [],
-                                imageUrl: a.imageUrl || a.image,
-                            })),
-                        },
-                        compliance: {
-                            title: row.complianceTitle,
-                            titleHighlight: row.complianceTitleHighlight,
-                            items: (row.complianceCards || []).map((c: any) => ({
-                                title: c.title || c.name,
-                                desc: c.desc || c.description,
-                                tags: c.tags || [c.tag1, c.tag2].filter(Boolean),
-                                imageUrl: c.imageUrl || c.image,
-                            })),
-                        },
-                        useCases: (row.useCases || []).map((u: any) => ({
-                            id: u.id || u.slug,
-                            label: u.label || u.title,
-                            tag: u.tag || u.badge,
-                            content: u.content || {
-                                title: u.content?.title || u.subtitle || u.title,
-                                desc: u.content?.desc || u.description,
-                                capabilities: u.content?.capabilities || u.capabilities || [],
-                                outcomes: u.content?.outcomes || u.outcomes || [],
-                            },
-                        })),
-                        metrics: {
-                            title: row.metricsTitle,
-                            titleHighlight: row.metricsTitleHighlight,
-                            items: (row.metrics || []).map((m: any) => ({
-                                prefix: m.prefix,
-                                num: m.num ?? m.value,
-                                sym: m.sym || m.suffix,
-                                label: m.label,
-                                desc: m.desc || m.description,
-                            })),
-                        },
-                        finalCta: {
-                            title: row.ctaTitle,
-                            titleHighlight: row.ctaTitleHighlight,
-                        },
-                    });
-                }
-            } catch (error) {
-                console.error("Failed to fetch industry data:", error);
-            } finally {
-                setIsLoading(false);
-            }
-        };
-
-        fetchIndustryData();
-    }, [slug]);
-
-    if (isLoading) {
-        return (
-            <div className="min-h-screen bg-white flex items-center justify-center">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
-            </div>
-        );
-    }
-
-    if (!pageData) {
+    if (!initialData) {
         return (
             <div className="min-h-screen bg-white flex items-center justify-center">
                 <p className="text-gray-500">Failed to load industry details.</p>
             </div>
         );
     }
+
+    const pageData = {
+        industry_name: initialData.name,
+        hero: {
+            title: initialData.heroTitle,
+            titleHighlight: initialData.heroTitleHighlight,
+            description: initialData.heroDescription,
+            descriptionHighlight: initialData.heroDescriptionHighlight,
+            image: initialData.heroImageUrl,
+        },
+        trustedLogos: initialData.trustedLogos || [],
+        otherFeatures: {
+            title: initialData.featuresTitle,
+            titleHighlight: initialData.featuresTitleHighlight,
+            description: initialData.featuresDescription,
+            features: initialData.featureCards || [],
+        },
+        transformationFunnel: {
+            items: initialData.transformationLegacy || [],
+            outcomes: initialData.transformationOutcomes || [],
+        },
+        caseStudy: {
+            title: initialData.caseStudy?.title,
+            titleHighlight: initialData.caseStudy?.titleHighlight,
+            challenge: initialData.caseStudy?.challenge,
+            solution: initialData.caseStudy?.solution,
+            image: initialData.caseStudy?.image || initialData.caseStudy?.imageUrl,
+            results: initialData.caseStudy?.results || initialData.caseStudy?.bulletResults || [],
+        },
+        verticalProduct: {
+            title: initialData.pillarsTitle,
+            titleHighlight: initialData.pillarsTitleHighlight,
+            subtitle: initialData.pillarsSubtitle,
+            pillars: initialData.productPillars || [],
+        },
+        agentMapping: {
+            title: initialData.agentsTitle,
+            titleHighlight: initialData.agentsTitleHighlight,
+            agents: (initialData.agentCards || []).map((a: any) => ({
+                title: a.title || a.name,
+                subtitle: a.subtitle || a.tagline,
+                bullets: a.bullets || a.bulletPoints || [],
+                imageUrl: a.imageUrl || a.image,
+            })),
+        },
+        compliance: {
+            title: initialData.complianceTitle,
+            titleHighlight: initialData.complianceTitleHighlight,
+            items: (initialData.complianceCards || []).map((c: any) => ({
+                title: c.title || c.name,
+                desc: c.desc || c.description,
+                tags: c.tags || [c.tag1, c.tag2].filter(Boolean),
+                imageUrl: c.imageUrl || c.image,
+            })),
+        },
+        useCases: (initialData.useCases || []).map((u: any) => ({
+            id: u.id || u.slug,
+            label: u.label || u.title,
+            tag: u.tag || u.badge,
+            content: u.content || {
+                title: u.content?.title || u.subtitle || u.title,
+                desc: u.content?.desc || u.description,
+                capabilities: u.content?.capabilities || u.capabilities || [],
+                outcomes: u.content?.outcomes || u.outcomes || [],
+            },
+        })),
+        metrics: {
+            title: initialData.metricsTitle,
+            titleHighlight: initialData.metricsTitleHighlight,
+            items: (initialData.metrics || []).map((m: any) => ({
+                prefix: m.prefix,
+                num: m.num ?? m.value,
+                sym: m.sym || m.suffix,
+                label: m.label,
+                desc: m.desc || m.description,
+            })),
+        },
+        finalCta: {
+            title: initialData.ctaTitle,
+            titleHighlight: initialData.ctaTitleHighlight,
+        },
+    };
 
     return (
         <div className="bg-white text-black">

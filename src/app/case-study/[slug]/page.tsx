@@ -43,7 +43,7 @@ export default async function CaseStudyDetailPage({ params }: { params: Promise<
   return (
     <>
       {cs && <JsonLd data={cs.schemaMarkup || JSON.stringify(buildDefaultSchema("caseStudy", cs))} />}
-      <CaseStudyDetailClient />
+      <CaseStudyDetailClient initialData={cs} />
     </>
   );
 }

@@ -43,7 +43,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
   return (
     <>
       {row && <JsonLd data={row.schemaMarkup || JSON.stringify(buildDefaultSchema("industry", row))} />}
-      <IndustryDetailClient />
+      <IndustryDetailClient initialData={row} />
     </>
   );
 }

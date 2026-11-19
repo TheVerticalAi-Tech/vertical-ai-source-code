@@ -1,7 +1,5 @@
 "use client";
 
-import { useParams } from "next/navigation";
-import { useEffect, useState, Suspense } from "react";
 import Header from "@/components/landing-page/header";
 import LandingPageFooter from "@/components/landing-page/landing-page-footer";
 import { User2Icon, CalendarIcon, ClockIcon, ChevronRight } from "lucide-react";
@@ -66,24 +64,8 @@ function renderSection(section: Section, index: number) {
   }
 }
 
-function BlogDetailContent() {
-  const params = useParams();
-  const slug = params.slug as string;
-  const [data, setData] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    if (!slug) return;
-    fetch(`${process.env.NEXT_PUBLIC_CMS_API_URL}/api/public/blogs`)
-      .then((res) => res.json())
-      .then((json) => {
-        const blogs = Array.isArray(json?.blogs) ? json.blogs : [];
-        const blog = blogs.find((b: any) => b.slug === slug) || null;
-        if (blog) setData(blog);
-        setLoading(false);
-      })
-      .catch(() => setLoading(false));
-  }, [slug]);
+function BlogDetailContent({ initialData }: { initialData: any }) {
+  const data = initialData;
 
   const formatDate = (dateString: string) => {
     if (!dateString) return "";
@@ -94,8 +76,6 @@ function BlogDetailContent() {
     });
   };
 
-  if (!slug) return <div className="py-32 text-center text-xl text-gray-600">No blog post specified.</div>;
-  if (loading) return <div className="py-32 text-center text-xl text-gray-600">Loading insight...</div>;
   if (!data) return <div className="py-32 text-center text-xl text-gray-600">Blog post not found.</div>;
 
   const articleSections: any[] = Array.isArray(data.articleSections) && data.articleSections.length > 0 ? data.articleSections : [];
@@ -189,13 +169,11 @@ function BlogDetailContent() {
   );
 }
 
-export default function BlogDetailClient() {
+export default function BlogDetailClient({ initialData }: { initialData: any }) {
   return (
     <div className="min-h-screen bg-white">
       <Header visible={true} />
-      <Suspense fallback={<div className="min-h-screen bg-white flex items-center justify-center">Loading...</div>}>
-        <BlogDetailContent />
-      </Suspense>
+      <BlogDetailContent initialData={initialData} />
       <LandingPageFooter />
     </div>
   );
