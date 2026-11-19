@@ -55,4 +55,26 @@ for (const entry of rootEntries) {
   }
 }
 
+// Platform and industry sub-pages have no matching subdirectory so fixDir
+// skips them, but Apache's mod_dir will append a trailing slash and 404
+// unless an index.html exists. Create one for every slug under these dirs.
+const SLUG_DIRS = ["platform", "industry"];
+for (const dir of SLUG_DIRS) {
+  const absDir = path.join(OUT, dir);
+  if (!fs.existsSync(absDir)) continue;
+  const entries = fs.readdirSync(absDir, { withFileTypes: true });
+  for (const entry of entries) {
+    if (!entry.isFile() || !entry.name.endsWith(".html")) continue;
+    const slug = entry.name.slice(0, -5);
+    const subdir = path.join(absDir, slug);
+    // Create the subdirectory if it doesn't already exist.
+    if (!fs.existsSync(subdir)) fs.mkdirSync(subdir);
+    const dest = path.join(subdir, "index.html");
+    if (!fs.existsSync(dest)) {
+      fs.copyFileSync(path.join(absDir, entry.name), dest);
+      console.log(`  copied → out/${dir}/${slug}/index.html`);
+    }
+  }
+}
+
 console.log("postbuild: done.");

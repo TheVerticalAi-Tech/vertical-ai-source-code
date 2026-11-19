@@ -36,6 +36,14 @@ RewriteRule ^industry-detail/?$ /industry/%1? [R=301,L]
 # images. Resolve each page URL before Apache treats it as a directory.
 RewriteRule ^(blog|careers|team|why-us)/?$ $1.html [L]
 
+# Platform and industry sub-pages: resolve /platform/<slug> and
+# /industry/<slug> to their .html files before mod_dir can append a
+# trailing slash and turn the request into a directory lookup (404).
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(platform|industry)/([^/]+)/?$ $1/$2.html [L]
+
 # Keep Next.js assets and file requests unchanged.
 RewriteCond %{REQUEST_URI} ^/_next/ [OR]
 RewriteCond %{REQUEST_URI} \.(?:css|js|mjs|map|jpg|jpeg|png|gif|webp|avif|svg|ico|woff|woff2|ttf|otf|txt|xml|json|webmanifest)$
