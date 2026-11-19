@@ -1,6 +1,11 @@
 RewriteEngine On
 RewriteBase /
 
+# Force HTTPS — must run before any other rule so HTTP requests are
+# redirected immediately, preserving the full path and query string.
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
 # These exported pages also have same-named directories for nested pages or
 # images. Resolve each page URL before Apache treats it as a directory.
 RewriteRule ^(blog|careers|team|why-us)/?$ $1.html [L]
@@ -19,11 +24,6 @@ RewriteRule ^ - [L]
 # treats same-named directories as directory URLs.
 RewriteCond %{REQUEST_FILENAME}.html -f
 RewriteRule ^(.+?)/?$ $1.html [L]
-
-# DT-03 redirects (supersedes DT-02)
-# Force HTTPS
-RewriteCond %{HTTPS} off
-RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
 # Legacy platform/industry slug-less routes
 RedirectMatch 301 ^/platform-detail/?$ /platform
