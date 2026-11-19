@@ -6,6 +6,7 @@
     "dev": "node ./node_modules/next/dist/bin/next dev",
     "prebuild": "node ./scripts/clear-next-fetch-cache.js",
     "build": "node ./node_modules/next/dist/bin/next build",
+    "postbuild": "node ./scripts/postbuild.js",
     "start": "node ./node_modules/next/dist/bin/next start",
     "lint": "node ./node_modules/next/dist/bin/next lint"
   },
