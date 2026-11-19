@@ -62,7 +62,8 @@ RewriteRule ^(.+?)/?$ $1.html [L]
 # Legacy slug-less routes (no query string — safe after file-serving rules)
 RedirectMatch 301 ^/platform/?$ /platform/conversa
 RedirectMatch 301 ^/platform-detail/?$ /platform/conversa
-RedirectMatch 301 ^/industry-detail/?$ /industry
+RedirectMatch 301 ^/industry/?$ /
+RedirectMatch 301 ^/industry-detail/?$ /
 
 # Platform renames and legacy path prefixes
 RedirectMatch 301 ^/platform/vocalis$ /platform/conversa
