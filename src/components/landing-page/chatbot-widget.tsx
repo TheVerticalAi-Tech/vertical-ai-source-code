@@ -345,6 +345,7 @@ export default function ChatbotWidget() {
 
   return (
     <div className="fixed right-4 bottom-4 sm:right-6 sm:bottom-6 z-[60] flex flex-col items-center gap-2">
+      {/* WhatsApp button — hidden, uncomment to restore
       <a
         href="https://wa.me/918071579670?text=Hi%2C%20I%20want%20to%20know%20more%20about%20your%20services"
         target="_blank"
@@ -358,6 +359,7 @@ export default function ChatbotWidget() {
           className="h-full w-full object-contain"
         />
       </a>
+      */}
 
       {/* The DNA Orb Container */}
       <motion.div
