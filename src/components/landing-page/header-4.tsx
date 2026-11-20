@@ -47,25 +47,25 @@ import { motion, AnimatePresence } from 'framer-motion';
 import logo from '@/assets/logo.png';
 
 export const navAIAgents = [
-    { name: "Maestro", desc: "Orchestration Brain", href: "/platform/maestro", icon: Brain },
-    { name: "Vocalis", desc: "Human-like Voice Agents", href: "/platform/conversa", icon: Mic2 },
-    { name: "Guardian", desc: "Compliance & Audit Agents", href: "/platform/guardian", icon: ShieldCheck },
-    { name: "Insights", desc: "Analytics & Intelligence Agents", href: "/platform/insights", icon: BarChart3 },
-    { name: "Conversa", desc: "Intelligent Chat Agents", href: "/platform/conversa", icon: MessagesSquare }
+    { name: "Maestro", desc: "Orchestration Brain", href: "/platform/maestro/", icon: Brain },
+    { name: "Vocalis", desc: "Human-like Voice Agents", href: "/platform/conversa/", icon: Mic2 },
+    { name: "Guardian", desc: "Compliance & Audit Agents", href: "/platform/guardian/", icon: ShieldCheck },
+    { name: "Insights", desc: "Analytics & Intelligence Agents", href: "/platform/insights/", icon: BarChart3 },
+    { name: "Conversa", desc: "Intelligent Chat Agents", href: "/platform/conversa/", icon: MessagesSquare }
 ];
 
 export const navIndustries = [
-    { name: "BFSI", desc: "Banking, Financial Services & Insurance", icon: Landmark, href: "/industry/bfsi" },
-    { name: "Healthcare", desc: "Patient care & medical automation", icon: Activity, href: "/industry/healthcare" },
-    { name: "Telecom", desc: "Customer support & network insights", icon: PhoneCall, href: "/industry/telecom" },
-    { name: "E-commerce", desc: "Personalized shopping experiences", icon: ShoppingBag, href: "/industry/e-commerce" },
-    { name: "Real Estate", desc: "Property management & lead gen", icon: Home, href: "/industry/real-estate" },
-    { name: "Automotive", desc: "Smart dealership & service agents", icon: Car, href: "/industry/automotive" },
-    { name: "EdTech", desc: "Adaptive learning & student support", icon: BookOpen, href: "/industry/edtech" },
-    { name: "BPO", desc: "Scaled operational efficiency", icon: Headset, href: "/industry/bpo" },
-    { name: "Microfinance", desc: "Inclusive financial technology", icon: Coins, href: "/industry/microfinance" },
-    { name: "Travel", desc: "Itinerary planning & booking bots", icon: Plane, href: "/industry/travel" },
-    { name: "HR Services", desc: "Automated recruitment & onboarding", icon: UserPlus, href: "/industry/hr-services" },
+    { name: "BFSI", desc: "Banking, Financial Services & Insurance", icon: Landmark, href: "/industry/bfsi/" },
+    { name: "Healthcare", desc: "Patient care & medical automation", icon: Activity, href: "/industry/healthcare/" },
+    { name: "Telecom", desc: "Customer support & network insights", icon: PhoneCall, href: "/industry/telecom/" },
+    { name: "E-commerce", desc: "Personalized shopping experiences", icon: ShoppingBag, href: "/industry/e-commerce/" },
+    { name: "Real Estate", desc: "Property management & lead gen", icon: Home, href: "/industry/real-estate/" },
+    { name: "Automotive", desc: "Smart dealership & service agents", icon: Car, href: "/industry/automotive/" },
+    { name: "EdTech", desc: "Adaptive learning & student support", icon: BookOpen, href: "/industry/edtech/" },
+    { name: "BPO", desc: "Scaled operational efficiency", icon: Headset, href: "/industry/bpo/" },
+    { name: "Microfinance", desc: "Inclusive financial technology", icon: Coins, href: "/industry/microfinance/" },
+    { name: "Travel", desc: "Itinerary planning & booking bots", icon: Plane, href: "/industry/travel/" },
+    { name: "HR Services", desc: "Automated recruitment & onboarding", icon: UserPlus, href: "/industry/hr-services/" },
 ];
 
 export const navWhyVerticalAI = [
@@ -87,31 +87,31 @@ export const navResources = [
 ];
 
 export const navCompany = [
-    { name: "About us", desc: "Our mission and story", href: "/about-us", icon: Info },
+    { name: "About us", desc: "Our mission and story", href: "/about-us/", icon: Info },
     { name: "Leadership Team", desc: "The minds behind The Vertical AI", href: "/leadership", icon: Users },
-    { name: "Careers", desc: "Join our growing team", href: "/careers", icon: Briefcase },
-    { name: "Support", desc: "24/7 technical assistance", href: "/support", icon: LifeBuoy }
+    { name: "Careers", desc: "Join our growing team", href: "/careers/", icon: Briefcase },
+    { name: "Support", desc: "24/7 technical assistance", href: "/support/", icon: LifeBuoy }
 ];
 
 export const navClients = [
-    { name: "Success Stories", desc: "Real transformation results", href: "/case-studies", icon: FileText },
-    { name: "Testimonials", desc: "What our clients say", href: "/testimonials", icon: MessageCircle },
+    { name: "Success Stories", desc: "Real transformation results", href: "/case-studies/", icon: FileText },
+    { name: "Testimonials", desc: "What our clients say", href: "/testimonials/", icon: MessageCircle },
     { name: "Partner Program", desc: "Build with The Vertical AI", href: "/partners", icon: Users },
-    { name: "Request Access", desc: "Start your journey", href: "/get-demo", icon: ArrowRight }
+    { name: "Request Access", desc: "Start your journey", href: "/get-demo/", icon: ArrowRight }
 ];
 
 export const navReachUs = [
-    { name: "Chat with Sales", desc: "Available 24/7", href: "/get-demo", icon: MessagesSquare },
+    { name: "Chat with Sales", desc: "Available 24/7", href: "/get-demo/", icon: MessagesSquare },
     { name: "Email Us", desc: "info@thevertical.ai", href: "mailto:info@thevertical.ai", icon: Mail },
     { name: "Office", desc: "San Francisco, CA", href: "#", icon: MapPin },
-    { name: "Support Center", desc: "Documentation & help", href: "/support", icon: LifeBuoy }
+    { name: "Support Center", desc: "Documentation & help", href: "/support/", icon: LifeBuoy }
 ];
 
 export const navPolicies = [
-    { name: "Privacy Policy", desc: "How we handle data", href: "/privacy-policy", icon: Shield },
-    { name: "Terms of Service", desc: "Legal agreement", href: "/terms-conditions", icon: FileText },
-    { name: "Security Policy", desc: "Enterprise protection", href: "/security", icon: Lock },
-    { name: "Cookie Policy", desc: "Usage transparency", href: "/cookies", icon: ShieldCheck }
+    { name: "Privacy Policy", desc: "How we handle data", href: "/privacy-policy/", icon: Shield },
+    { name: "Terms of Service", desc: "Legal agreement", href: "/terms-conditions/", icon: FileText },
+    { name: "Security Policy", desc: "Enterprise protection", href: "/security/", icon: Lock },
+    { name: "Cookie Policy", desc: "Usage transparency", href: "/cookies/", icon: ShieldCheck }
 ];
 
 interface HeaderProps {
@@ -287,7 +287,7 @@ export default function Header4({ visible = true }: HeaderProps) {
                                     </div>
                                 </div>
 
-                                <Link href="/insights" className="text-xl font-medium text-gray-900 relative overflow-hidden h-[1.5em] flex flex-col group">
+                                <Link href="/insights/" className="text-xl font-medium text-gray-900 relative overflow-hidden h-[1.5em] flex flex-col group">
                                     <span className="transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:-translate-y-full">
                                         Insights
                                     </span>

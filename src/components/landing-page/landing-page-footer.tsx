@@ -92,9 +92,9 @@ const LandingPageFooter = () => {
         <div className="space-y-4 sm:space-y-6">
           <h3 className="font-bold text-base sm:text-lg 2xl:text-xl text-white">Company</h3>
           <ul className="space-y-3 sm:space-y-4 text-sm sm:text-base 2xl:text-lg text-gray-400">
-            <li><Link href="/about-us" className="hover:text-white transition-colors">About</Link></li>
-            <li><Link href="/careers" className="hover:text-white transition-colors">Careers</Link></li>
-            <li><Link href="/support" className="hover:text-white transition-colors">Contact</Link></li>
+            <li><Link href="/about-us/" className="hover:text-white transition-colors">About</Link></li>
+            <li><Link href="/careers/" className="hover:text-white transition-colors">Careers</Link></li>
+            <li><Link href="/support/" className="hover:text-white transition-colors">Contact</Link></li>
           </ul>
         </div>
 
@@ -102,10 +102,10 @@ const LandingPageFooter = () => {
         <div className="space-y-4 sm:space-y-6">
           <h3 className="font-bold text-base sm:text-lg 2xl:text-xl text-white">Legal</h3>
           <ul className="space-y-3 sm:space-y-4 text-sm sm:text-base 2xl:text-lg text-gray-400">
-            <li><Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy</Link></li>
-            <li><Link href="/terms-conditions" className="hover:text-white transition-colors">Terms</Link></li>
-            <li><Link href="/security" className="hover:text-white transition-colors">Security</Link></li>
-            <li><Link href="/cookies" className="hover:text-white transition-colors">Cookies</Link></li>
+            <li><Link href="/privacy-policy/" className="hover:text-white transition-colors">Privacy</Link></li>
+            <li><Link href="/terms-conditions/" className="hover:text-white transition-colors">Terms</Link></li>
+            <li><Link href="/security/" className="hover:text-white transition-colors">Security</Link></li>
+            <li><Link href="/cookies/" className="hover:text-white transition-colors">Cookies</Link></li>
           </ul>
         </div>
       </div>

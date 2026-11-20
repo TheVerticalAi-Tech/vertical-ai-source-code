@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { fetchCmsResource } from "@/lib/cms-api";
-import { SITE_URL } from "@/lib/site";
+import { SITE_URL, sitePageUrl } from "@/lib/site";
 import JobDetailClient from "./JobDetailClient";
 
 async function getJob(slug: string) {
@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!job) return {};
   const title = `${job.title} | The Vertical AI`;
   const description = job.description || `Join The Vertical AI as a ${job.title} in ${job.category}. ${job.location} · ${job.type}.`;
-  const canonical = `${SITE_URL}/careers/${slug}`;
+  const canonical = sitePageUrl(`careers/${slug}`);
   return {
     title, description,
     alternates: { canonical },

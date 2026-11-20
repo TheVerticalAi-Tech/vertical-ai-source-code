@@ -217,7 +217,7 @@ export default function BlogClient() {
                       className="rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 bg-white border border-gray-100"
                     >
                       <Link
-                        href={`/blog/${post.slug}`}
+                        href={`/blog/${post.slug}/`}
                         className="block group"
                       >
                         {/* Image Section */}

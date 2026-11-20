@@ -9,7 +9,7 @@ function LegacyCaseStudyDetailRedirect() {
   const slug = searchParams.get("slug");
 
   useEffect(() => {
-    window.location.replace(slug ? `/case-study/${slug}` : "/");
+    window.location.replace(slug ? `/case-study/${slug}/` : "/");
   }, [slug]);
 
   return null;

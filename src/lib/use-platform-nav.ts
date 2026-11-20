@@ -25,7 +25,7 @@ export function usePlatformNavItems(): PlatformNavItem[] {
             .map((p: any) => ({
             name: p.name,
             desc: p.heroTitle || "",
-            href: `/platform/${p.slug}`,
+            href: `/platform/${p.slug}/`,
           }));
           mapped.sort((a, b) => {
             const ai = PLATFORM_ORDER.indexOf(a.name.toUpperCase());

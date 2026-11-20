@@ -24,7 +24,7 @@ export function useIndustryNavItems(): IndustryNavItem[] {
               .map((i: any) => ({
                 name: i.name,
                 desc: i.heroDescription || "",
-                href: `/industry/${i.slug}`,
+                href: `/industry/${i.slug}/`,
               }))
           );
         }

@@ -87,7 +87,7 @@ function BlogDetailContent({ initialData }: { initialData: any }) {
       <nav className="flex items-center gap-2 text-sm text-gray-400 mb-8 overflow-hidden whitespace-nowrap">
         <Link href="/" className="hover:text-primary transition-colors shrink-0">Home</Link>
         <ChevronRight size={14} className="shrink-0" />
-        <Link href="/blog" className="hover:text-primary transition-colors shrink-0">Insights</Link>
+        <Link href="/blog/" className="hover:text-primary transition-colors shrink-0">Insights</Link>
         <ChevronRight size={14} className="shrink-0" />
         <span className="text-gray-900 font-medium truncate">{data.title}</span>
       </nav>

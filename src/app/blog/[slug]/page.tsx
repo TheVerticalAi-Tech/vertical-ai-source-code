@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { fetchCmsResource } from "@/lib/cms-api";
-import { SITE_URL } from "@/lib/site";
+import { sitePageUrl } from "@/lib/site";
 import { JsonLd, buildDefaultSchema } from "@/lib/json-ld";
 import BlogDetailClient from "./BlogDetailClient";
 
@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!post) return {};
   const title = post.metaTitle || post.title;
   const description = post.metaDescription || post.excerpt;
-  const canonical = `${SITE_URL}/blog/${slug}`;
+  const canonical = sitePageUrl(`blog/${slug}`);
   const ogImage = post.ogImageUrl || post.bannerUrl;
   return {
     title, description,

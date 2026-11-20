@@ -387,7 +387,7 @@ export default function IndustryDetailClient({ initialData }: { initialData: any
                                 className="mt-6 flex flex-wrap gap-4"
                             >
                                 <button
-                                    onClick={() => router.push("/get-demo")}
+                                    onClick={() => router.push("/get-demo/")}
                                     className="inline-flex items-center justify-center gap-2 py-2 sm:py-3 px-4 sm:px-5 rounded-2xl bg-primary text-white font-bold text-sm sm:text-base transition-all duration-300 shadow-xl shadow-primary/20 hover:-translate-y-1 hover:scale-105 active:scale-95 hover:!bg-black cursor-pointer">
                                     <span>Talk to an Expert</span>
                                     <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -537,7 +537,7 @@ export default function IndustryDetailClient({ initialData }: { initialData: any
                             </div>
 
                             <button
-                                onClick={() => router.push("/get-demo")}
+                                onClick={() => router.push("/get-demo/")}
                                 className="mt-14 inline-flex items-center justify-center gap-2 py-2 sm:py-3 px-4 sm:px-5 rounded-2xl bg-primary text-white font-bold text-sm sm:text-base transition-all duration-300 shadow-xl shadow-primary/20 hover:-translate-y-1 hover:scale-105 active:scale-95 hover:!bg-black w-max cursor-pointer">
                                 <span>Talk to an Expert</span>
                                 <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -667,7 +667,7 @@ export default function IndustryDetailClient({ initialData }: { initialData: any
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: 0.2 }}
-                            onClick={() => router.push('/get-demo')}
+                            onClick={() => router.push('/get-demo/')}
                             className="inline-flex items-center justify-center gap-2 py-2 sm:py-3 px-4 sm:px-5 rounded-2xl bg-primary text-white font-bold text-sm sm:text-base transition-all duration-300 shadow-xl shadow-primary/20 hover:-translate-y-1 hover:scale-105 active:scale-95 hover:!bg-black cursor-pointer"
                         >
                             <span>Talk to an Expert</span>
@@ -697,7 +697,7 @@ export default function IndustryDetailClient({ initialData }: { initialData: any
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: 0.2 }}
-                            onClick={() => router.push('/get-demo')}
+                            onClick={() => router.push('/get-demo/')}
                             className="inline-flex items-center justify-center gap-2 py-2 sm:py-3 px-4 sm:px-5 rounded-2xl bg-primary text-white font-bold text-sm sm:text-base transition-all duration-300 shadow-xl shadow-primary/20 hover:-translate-y-1 hover:scale-105 active:scale-95 hover:!bg-black cursor-pointer"
                         >
                             <span>Talk to an Expert</span>
@@ -768,7 +768,7 @@ export default function IndustryDetailClient({ initialData }: { initialData: any
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: 0.2 }}
-                            onClick={() => router.push('/get-demo')}
+                            onClick={() => router.push('/get-demo/')}
                             className="inline-flex items-center justify-center gap-2 py-2 sm:py-3 px-4 sm:px-5 rounded-2xl bg-primary text-white font-bold text-sm sm:text-base transition-all duration-300 shadow-xl shadow-primary/20 hover:-translate-y-1 hover:scale-105 active:scale-95 hover:!bg-black"
                         >
                             <span>Talk to an Expert</span>
@@ -795,13 +795,13 @@ export default function IndustryDetailClient({ initialData }: { initialData: any
 
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 pt-4 md:pt-6">
                             <button
-                                onClick={() => router.push('/get-demo')}
+                                onClick={() => router.push('/get-demo/')}
                                 className="w-full sm:w-auto px-6 md:px-10 py-4 md:py-5 bg-accent text-white rounded-2xl font-bold text-base md:text-xl flex items-center justify-center gap-4 transition-all shadow-xl hover:-translate-y-1">
                                 Talk to our Experts
                                 <ArrowRight className="w-5 h-5 md:w-6 md:h-6" />
                             </button>
                             <button
-                                onClick={() => router.push('/get-demo')}
+                                onClick={() => router.push('/get-demo/')}
                                 className="w-full sm:w-auto px-6 md:px-10 py-4 md:py-5 bg-primary-foreground/10 hover:bg-primary-foreground/20 text-white border border-white/20 rounded-2xl font-bold text-base md:text-xl transition-all backdrop-blur-md">
                                 Contact Sales
                             </button>

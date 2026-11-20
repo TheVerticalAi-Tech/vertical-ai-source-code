@@ -70,7 +70,7 @@ export default function WhyUsClient() {
             return (
               <Link
                 key={feature.id}
-                href={`/why-us/${feature.slug}`}
+                href={`/why-us/${feature.slug}/`}
                 className="group relative flex flex-col p-8 rounded-[2rem] bg-gray-50 border border-transparent hover:bg-white hover:border-gray-100 hover:shadow-[0_20px_50px_rgba(250,139,57,0.12)] transition-all duration-500 overflow-hidden"
               >
                 {/* Visual Header */}
@@ -124,7 +124,7 @@ export default function WhyUsClient() {
             <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 leading-tight">Ready to integrate?</h3>
             <p className="text-base md:text-lg text-gray-600 mb-8">Join the leading enterprises utilizing The Vertical AI to completely automate compliance-heavy operational workflows securely.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/get-demo" className="inline-flex items-center justify-center h-12 md:h-14 px-6 md:px-8 rounded-xl bg-primary text-white font-medium text-sm md:text-base hover:bg-black transition-colors shadow-lg shadow-primary/20">
+              <Link href="/get-demo/" className="inline-flex items-center justify-center h-12 md:h-14 px-6 md:px-8 rounded-xl bg-primary text-white font-medium text-sm md:text-base hover:bg-black transition-colors shadow-lg shadow-primary/20">
                 Request Full Documentation
               </Link>
               <Link href="/" className="inline-flex items-center justify-center h-12 md:h-14 px-6 md:px-8 rounded-xl bg-white text-gray-900 font-medium text-sm md:text-base hover:bg-gray-50 transition-colors border border-gray-200 shadow-sm">

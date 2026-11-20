@@ -306,9 +306,9 @@ export default function GetDemoClient() {
                         <div className="flex flex-col items-center justify-center pl-3 border-l border-gray-200">
                           <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA" className="w-8 h-8 opacity-80" />
                           <div className="flex gap-1 mt-1 text-[9px] text-gray-500">
-                            <Link href="/privacy-policy" className="hover:underline cursor-pointer">Privacy</Link>
+                            <Link href="/privacy-policy/" className="hover:underline cursor-pointer">Privacy</Link>
                             <span>-</span>
-                            <Link href="/terms-conditions" className="hover:underline cursor-pointer">Terms</Link>
+                            <Link href="/terms-conditions/" className="hover:underline cursor-pointer">Terms</Link>
                           </div>
                         </div>
                       </div>
@@ -338,7 +338,7 @@ export default function GetDemoClient() {
                       </Button>
                       
                       <p className="text-center text-xs text-gray-500 mt-4">
-                        By submitting this form, you agree to our <a href="/terms-conditions" className="text-primary hover:underline">Terms of Service</a> and <a href="/privacy-policy" className="text-primary hover:underline">Privacy Policy</a>.
+                        By submitting this form, you agree to our <a href="/terms-conditions/" className="text-primary hover:underline">Terms of Service</a> and <a href="/privacy-policy/" className="text-primary hover:underline">Privacy Policy</a>.
                       </p>
                     </form>
                   </>

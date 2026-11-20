@@ -171,7 +171,7 @@ export default function CaseStudiesClient() {
                         <p className="text-gray-600 mb-5 text-sm leading-relaxed">{caseStudy.outcome}</p>
 
                         <Link
-                          href={`/case-study/${caseStudy.slug}`}
+                          href={`/case-study/${caseStudy.slug}/`}
                           className="mt-auto inline-flex items-center text-primary font-semibold hover:text-primary/70 transition-colors"
                         >
                           {caseStudy.banner_cta_label || "Read case study"}
@@ -211,7 +211,7 @@ export default function CaseStudiesClient() {
                 show: { opacity: 1, y: 0 }
               }}
               transition={{ duration: 0.6, ease: "easeOut" }}
-              onClick={() => router.push(`/case-study/${caseStudy.slug}`)}
+              onClick={() => router.push(`/case-study/${caseStudy.slug}/`)}
             >
               <div className="relative w-full h-full pb-4 flex flex-col">
                 {/* Image Banner */}
@@ -245,7 +245,7 @@ export default function CaseStudiesClient() {
                   <p className="text-gray-600 mb-5 text-sm leading-relaxed line-clamp-3">{caseStudy.outcome}</p>
 
                   <Link
-                    href={`/case-study/${caseStudy.slug}`}
+                    href={`/case-study/${caseStudy.slug}/`}
                     className="mt-auto inline-flex items-center text-primary font-semibold hover:text-primary/70 transition-colors"
                   >
                     {caseStudy.banner_cta_label || "Read case study"}

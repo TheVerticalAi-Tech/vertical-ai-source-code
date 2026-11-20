@@ -36,7 +36,7 @@ function usePlatformServices(): ServiceItem[] {
               description: p.heroDescription || "",
               imageSrc: p.heroImageUrl,
               imageAlt: `${p.name} OS`,
-              url: `/platform/${p.slug}`,
+              url: `/platform/${p.slug}/`,
             };
           });
           setServices(mapped);

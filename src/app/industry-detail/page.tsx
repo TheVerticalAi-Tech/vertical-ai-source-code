@@ -9,7 +9,7 @@ function LegacyIndustryDetailRedirect() {
   const slug = searchParams.get("slug");
 
   useEffect(() => {
-    window.location.replace(slug ? `/industry/${slug}` : "/");
+    window.location.replace(slug ? `/industry/${slug}/` : "/");
   }, [slug]);
 
   return null;

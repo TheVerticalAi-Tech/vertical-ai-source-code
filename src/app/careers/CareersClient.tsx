@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import { sitePagePath } from "@/lib/site";
 import {
   Select,
   SelectContent,
@@ -84,7 +85,7 @@ export default function CareersClient() {
           setMissions(
             json.jobs
               .filter((c: CareerItem) => c.status === "published")
-              .map((c: CareerItem) => ({ ...c, link: `/careers/${c.slug}` }))
+              .map((c: CareerItem) => ({ ...c, link: `/careers/${c.slug}/` }))
           );
         }
       })
@@ -298,7 +299,7 @@ export default function CareersClient() {
                       </div>
                       <div className="flex justify-end mt-6">
                         <button
-                          onClick={() => router.push(mission.link)}
+                          onClick={() => router.push(sitePagePath(mission.link))}
                           className="w-fit inline-flex items-center justify-center gap-2 py-2 sm:py-3 px-4 sm:px-5 rounded-2xl bg-primary text-white font-bold text-sm sm:text-base transition-all duration-300 shadow-xl shadow-primary/20 hover:-translate-y-1 hover:scale-105 active:scale-95 hover:!bg-black"
                         >
                           <span>Apply Here</span>

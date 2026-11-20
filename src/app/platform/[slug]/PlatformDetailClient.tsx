@@ -150,7 +150,7 @@ function PlatformDetailContent({ initialData }: { initialData: any }) {
                         className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10"
                     >
                         <button
-                            onClick={() => router.push('/get-demo')}
+                            onClick={() => router.push('/get-demo/')}
                             className="inline-flex items-center justify-center gap-2 py-2 sm:py-3 px-4 sm:px-5 rounded-2xl bg-primary text-white font-bold text-sm sm:text-base transition-all duration-300 shadow-xl shadow-primary/20 hover:-translate-y-1 hover:scale-105 active:scale-95 hover:!bg-black cursor-pointer pointer-events-auto"
                         >
                             <span>Talk to an Expert</span>
@@ -334,7 +334,7 @@ function PlatformDetailContent({ initialData }: { initialData: any }) {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: 0.3 }}
-                            onClick={() => router.push('/get-demo')}
+                            onClick={() => router.push('/get-demo/')}
                             className="py-2 sm:py-3 px-4 sm:px-5 rounded-2xl bg-primary text-white font-bold text-xs sm:text-base hover:!bg-none hover:!bg-black hover:-translate-y-1 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center shadow-xl hover:shadow-primary/20 cursor-pointer pointer-events-auto"
                         >
                             Talk to an Expert <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
@@ -517,7 +517,7 @@ function PlatformDetailContent({ initialData }: { initialData: any }) {
 
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-6">
                             <button
-                                onClick={() => router.push("/get-demo")}
+                                onClick={() => router.push("/get-demo/")}
                                 className="w-full sm:w-auto py-2 sm:py-3 px-4 sm:px-5 bg-accent text-white rounded-2xl font-bold text-sm sm:text-base flex items-center justify-center gap-4 transition-all shadow-xl hover:-translate-y-1 cursor-pointer">
                                 Get Started Now
                                 <ArrowRight className="w-6 h-6" />

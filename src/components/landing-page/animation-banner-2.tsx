@@ -286,7 +286,7 @@ export default function AnimationBanner2() {
 
                             <div className="w-full lg:max-w-[65%] relative z-20 mt-6 sm:mt-8 pl-0.5 sm:pl-1 flex items-center gap-4">
                                 <button
-                                    onClick={() => router.push("/get-demo")}
+                                    onClick={() => router.push("/get-demo/")}
                                     className="w-full sm:w-auto py-2.5 sm:py-3.5 px-5 sm:px-7 rounded-2xl bg-primary text-white font-bold text-xs sm:text-base 2xl:text-lg hover:!bg-none hover:!bg-black hover:-translate-y-1 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center shadow-xl hover:shadow-primary/20 cursor-pointer pointer-events-auto whitespace-nowrap">
                                     Talk to an Expert <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
                                 </button>

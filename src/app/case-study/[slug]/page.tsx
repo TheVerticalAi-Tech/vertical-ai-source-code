@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { fetchCmsResource } from "@/lib/cms-api";
-import { SITE_URL } from "@/lib/site";
+import { sitePageUrl } from "@/lib/site";
 import { JsonLd, buildDefaultSchema } from "@/lib/json-ld";
 import CaseStudyDetailClient from "./CaseStudyDetailClient";
 
@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!cs) return {};
   const title = cs.metaTitle || cs.storyTitle;
   const description = cs.metaDescription || undefined;
-  const canonical = `${SITE_URL}/case-study/${slug}`;
+  const canonical = sitePageUrl(`case-study/${slug}`);
   const ogImage = cs.ogImageUrl || cs.headerImageUrl;
   return {
     title, description,

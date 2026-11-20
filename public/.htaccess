@@ -14,35 +14,27 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
 # /platform-detail?slug=vocalis  →  /platform/conversa  (specific rule first)
 RewriteCond %{QUERY_STRING} ^slug=vocalis$
-RewriteRule ^platform-detail/?$ /platform/conversa? [R=301,L]
+RewriteRule ^platform-detail/?$ /platform/conversa/? [R=301,L]
 
 # /platform/?slug=vocalis  →  /platform/conversa  (same slug, path-based variant)
 RewriteCond %{QUERY_STRING} ^slug=vocalis$
-RewriteRule ^platform/?$ /platform/conversa? [R=301,L]
+RewriteRule ^platform/?$ /platform/conversa/? [R=301,L]
 
 # /platform-detail?slug=<any>  →  /platform/<slug>
 RewriteCond %{QUERY_STRING} ^slug=([a-z-]+)$
-RewriteRule ^platform-detail/?$ /platform/%1? [R=301,L]
+RewriteRule ^platform-detail/?$ /platform/%1/? [R=301,L]
 
 # /platform/?slug=<any>  →  /platform/<slug>
 RewriteCond %{QUERY_STRING} ^slug=([a-z-]+)$
-RewriteRule ^platform/?$ /platform/%1? [R=301,L]
+RewriteRule ^platform/?$ /platform/%1/? [R=301,L]
 
 # /industry-detail?slug=<any>  →  /industry/<slug>
 RewriteCond %{QUERY_STRING} ^slug=([a-z-]+)$
-RewriteRule ^industry-detail/?$ /industry/%1? [R=301,L]
+RewriteRule ^industry-detail/?$ /industry/%1/? [R=301,L]
 
-# These exported pages also have same-named directories for nested pages or
-# images. Resolve each page URL before Apache treats it as a directory.
-RewriteRule ^(blog|careers|team|why-us)/?$ $1.html [L]
-
-# Platform and industry sub-pages: resolve /platform/<slug> and
-# /industry/<slug> to their .html files before mod_dir can append a
-# trailing slash and turn the request into a directory lookup (404).
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME}.html -f
-RewriteRule ^(platform|industry)/([^/]+)/?$ $1/$2.html [L]
+# Next's trailingSlash export creates route directories with index.html.
+# Apache's DirectorySlash sends one redirect to the slash URL; DirectoryIndex
+# then serves the page.
 
 # Keep Next.js assets and file requests unchanged.
 RewriteCond %{REQUEST_URI} ^/_next/ [OR]
@@ -54,31 +46,26 @@ RewriteRule ^ - [L]
 RewriteCond %{REQUEST_FILENAME} -f
 RewriteRule ^ - [L]
 
-# Resolve extensionless routes to their exported HTML files before Apache
-# treats same-named directories as directory URLs.
-RewriteCond %{REQUEST_FILENAME}.html -f
-RewriteRule ^(.+?)/?$ $1.html [L]
-
 # Legacy slug-less routes (no query string — safe after file-serving rules)
-RedirectMatch 301 ^/platform/?$ /platform/conversa
-RedirectMatch 301 ^/platform-detail/?$ /platform/conversa
+RedirectMatch 301 ^/platform/?$ /platform/conversa/
+RedirectMatch 301 ^/platform-detail/?$ /platform/conversa/
 RedirectMatch 301 ^/industry/?$ /
 RedirectMatch 301 ^/industry-detail/?$ /
 
 # Platform renames and legacy path prefixes
-RedirectMatch 301 ^/platform/vocalis$ /platform/conversa
-RedirectMatch 301 ^/platform-os/vocalis$ /platform/conversa
-RedirectMatch 301 ^/platform-os/(.+)$ /platform/$1
+RedirectMatch 301 ^/platform/vocalis/?$ /platform/conversa/
+RedirectMatch 301 ^/platform-os/vocalis/?$ /platform/conversa/
+RedirectMatch 301 ^/platform-os/([^/]+)/?$ /platform/$1/
 
 # Legacy /industries/ → /industry/
-RedirectMatch 301 ^/industries/(.+)$ /industry/$1
+RedirectMatch 301 ^/industries/([^/]+)/?$ /industry/$1/
 
 # Legacy /solutions/ → /industry/ (known mappings)
-RedirectMatch 301 ^/solutions/(automotive|edtech|travel|healthcare)$ /industry/$1
+RedirectMatch 301 ^/solutions/(automotive|edtech|travel|healthcare)/?$ /industry/$1/
 RedirectMatch 410 ^/solutions/realestate$
 
 # Legacy career URL
-RedirectMatch 301 ^/careers/software-engineer$ /careers
+RedirectMatch 301 ^/careers/software-engineer/?$ /careers/
 
 # /_not-found → real 404
 RewriteRule ^_not-found$ - [R=404,L]

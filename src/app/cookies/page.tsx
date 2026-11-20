@@ -3,7 +3,7 @@ import Header from "@/components/landing-page/header";
 import LandingPageFooter from "@/components/landing-page/landing-page-footer";
 import PageHero from "@/components/landing-page/page-hero";
 import { fetchCmsResource } from "@/lib/cms-api";
-import { SITE_URL } from "@/lib/site";
+import { sitePageUrl } from "@/lib/site";
 import { JsonLd, buildDefaultSchema } from "@/lib/json-ld";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const description =
     doc?.metaDescription ||
     "Understand how The Vertical AI uses cookies to improve your experience on our website.";
-  const canonical = `${SITE_URL}/cookies`;
+  const canonical = sitePageUrl("cookies");
   const ogTitle = doc?.ogTitle || title;
   const ogDescription = doc?.ogDescription || description;
   const ogImage = doc?.ogImageUrl || doc?.bannerUrl;
@@ -29,7 +29,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title: ogTitle,
       description: ogDescription,
       siteName: doc?.ogSiteName || "The Vertical AI",
-      url: doc?.ogUrl || canonical,
+      url: canonical,
       type: (doc?.ogType || "website") as any,
       images: ogImage ? [{ url: ogImage, alt: ogImageAlt }] : undefined,
     },

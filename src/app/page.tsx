@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { fetchCmsResource } from "@/lib/cms-api";
+import { sitePageUrl } from "@/lib/site";
 import { JsonLd, buildDefaultSchema } from "@/lib/json-ld";
 import LandingPageClient from "./LandingPageClient";
 
@@ -11,8 +12,9 @@ async function getHomeSeo() {
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: "/",
+    canonical: sitePageUrl(""),
   },
+  openGraph: { url: sitePageUrl("") },
 };
 
 export default async function Home() {

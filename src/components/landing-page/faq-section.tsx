@@ -109,7 +109,7 @@ const FAQSection: React.FC = () => {
 
               {/* CTA Button */}
               <button
-                onClick={() => router.push('/get-demo')}
+                onClick={() => router.push('/get-demo/')}
                 className="inline-flex items-center justify-center gap-2 py-2.5 sm:py-3.5 px-5 sm:px-7 rounded-2xl bg-primary text-white font-bold text-xs sm:text-base 2xl:text-lg hover:!bg-none hover:!bg-black hover:-translate-y-1 hover:scale-105 active:scale-95 transition-all duration-300 shadow-xl hover:shadow-primary/20 cursor-pointer pointer-events-auto"
               >
                 Talk to an Expert <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />

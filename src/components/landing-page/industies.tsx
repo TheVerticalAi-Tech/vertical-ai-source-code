@@ -90,7 +90,7 @@ function TechHeadingsSection() {
                         label: row.name,
                         counter: String(i + 1).padStart(2, "0"),
                         description: row.heroDescription,
-                        url: `/industry/${row.slug}`,
+                        url: `/industry/${row.slug}/`,
                         image: row.heroImageUrl,
                     }));
                     setTechItems(mapped);

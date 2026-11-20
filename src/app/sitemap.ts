@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { fetchCmsResource } from "@/lib/cms-api";
-import { SITE_URL } from "@/lib/site";
+import { sitePageUrl } from "@/lib/site";
 
 export const dynamic = "force-static";
 
@@ -24,7 +24,7 @@ const STATIC_PAGES = [
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticEntries: MetadataRoute.Sitemap = STATIC_PAGES.map((path) => ({
-    url: path ? `${SITE_URL}/${path}/` : `${SITE_URL}/`,
+    url: sitePageUrl(path),
     lastModified: new Date(),
   }));
 
@@ -40,42 +40,42 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const blogEntries: MetadataRoute.Sitemap = blogs
     .filter((b: any) => b.status === "published")
     .map((b: any) => ({
-      url: `${SITE_URL}/blog/${b.slug}`,
+      url: sitePageUrl(`blog/${b.slug}`),
       lastModified: b.publishedAt ? new Date(b.publishedAt) : b.updatedAt ? new Date(b.updatedAt) : new Date(),
     }));
 
   const caseStudyEntries: MetadataRoute.Sitemap = caseStudies
     .filter((c: any) => c.status === "published")
     .map((c: any) => ({
-      url: `${SITE_URL}/case-study/${c.slug}`,
+      url: sitePageUrl(`case-study/${c.slug}`),
       lastModified: c.updatedAt ? new Date(c.updatedAt) : new Date(),
     }));
 
   const industryEntries: MetadataRoute.Sitemap = industries
     .filter((i: any) => i.status === "published")
     .map((i: any) => ({
-      url: `${SITE_URL}/industry/${i.slug}`,
+      url: sitePageUrl(`industry/${i.slug}`),
       lastModified: i.updatedAt ? new Date(i.updatedAt) : new Date(),
     }));
 
   const careerEntries: MetadataRoute.Sitemap = careers
     .filter((j: any) => j.status === "published")
     .map((j: any) => ({
-      url: `${SITE_URL}/careers/${j.slug}`,
+      url: sitePageUrl(`careers/${j.slug}`),
       lastModified: j.updatedAt ? new Date(j.updatedAt) : new Date(),
     }));
 
   const platformEntries: MetadataRoute.Sitemap = platforms
     .filter((p: any) => p.status === "published")
     .map((p: any) => ({
-      url: `${SITE_URL}/platform/${p.slug}`,
+      url: sitePageUrl(`platform/${p.slug}`),
       lastModified: p.updatedAt ? new Date(p.updatedAt) : new Date(),
     }));
 
   const pillarEntries: MetadataRoute.Sitemap = pillars
     .filter((p: any) => p.status === "published")
     .map((p: any) => ({
-      url: `${SITE_URL}/why-us/${p.slug}/`,
+      url: sitePageUrl(`why-us/${p.slug}`),
       lastModified: p.updatedAt ? new Date(p.updatedAt) : new Date(),
     }));
 

@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import banner from "@/assets/company/about-us/banner.webp";
+import { sitePagePath } from "@/lib/site";
 
 const ICON_MAP: Record<string, React.ElementType> = {
   Shield, Zap, Globe, MessageSquare, Cpu, Layers,
@@ -212,7 +213,7 @@ export default function AboutUsClient() {
                           <h4 className="text-2xl md:text-4xl font-bold text-gray-900">{pillar.title}</h4>
                           <p className="text-base md:text-lg text-gray-500 leading-relaxed">{pillar.description}</p>
                           <div className="pt-2 md:pt-4">
-                            <Link href="/get-demo" className="inline-flex items-center gap-3 text-primary font-bold text-lg md:text-xl group/link">
+                            <Link href="/get-demo/" className="inline-flex items-center gap-3 text-primary font-bold text-lg md:text-xl group/link">
                               Explore Technical Docs
                               <ArrowRight className="w-6 h-6 transition-transform group-hover/link:translate-x-2" />
                             </Link>
@@ -265,13 +266,13 @@ export default function AboutUsClient() {
                 </h2>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-6">
                   <Link
-                    href={data.ctaButtonUrl || "/get-demo"}
+                    href={sitePagePath(data.ctaButtonUrl || "/get-demo/")}
                     className="w-full sm:w-auto px-10 py-5 bg-accent text-white rounded-2xl font-bold text-xl flex items-center justify-center gap-4 transition-all shadow-xl hover:-translate-y-1"
                   >
                     {data.ctaButtonText}
                     <ArrowRight className="w-6 h-6" />
                   </Link>
-                  <Link href="/careers" className="w-full sm:w-auto px-10 py-5 bg-primary-foreground/10 hover:bg-primary-foreground/20 text-white border border-white/20 rounded-2xl font-bold text-xl transition-all backdrop-blur-md flex items-center justify-center">
+                  <Link href="/careers/" className="w-full sm:w-auto px-10 py-5 bg-primary-foreground/10 hover:bg-primary-foreground/20 text-white border border-white/20 rounded-2xl font-bold text-xl transition-all backdrop-blur-md flex items-center justify-center">
                     Join the Mission
                   </Link>
                 </div>

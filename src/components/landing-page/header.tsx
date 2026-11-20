@@ -52,49 +52,49 @@ export const navWhyTheVerticalAI = [
   {
     name: "Framework",
     desc: "Our core AI methodology",
-    href: "/why-us/framework",
+    href: "/why-us/framework/",
     icon: Cpu,
   },
   {
     name: "Case Studies",
     desc: "Success stories from partners",
-    href: "/case-studies",
+    href: "/case-studies/",
     icon: FileText,
   },
   {
     name: "Testimonials",
     desc: "What our clients say",
-    href: "/testimonials",
+    href: "/testimonials/",
     icon: MessageCircle,
   },
   {
     name: "Security",
     desc: "Enterprise-grade protection",
-    href: "/why-us/security",
+    href: "/why-us/security/",
     icon: Shield,
   },
   {
     name: "Compliance",
     desc: "Meeting global standards",
-    href: "/why-us/compliance",
+    href: "/why-us/compliance/",
     icon: CheckCircle2,
   },
   {
     name: "Data Privacy",
     desc: "Your data stays yours",
-    href: "/privacy-policy",
+    href: "/privacy-policy/",
     icon: Lock,
   },
   {
     name: "Philosophy",
     desc: "Engineering the 10x Future",
-    href: "/why-us/philosophy",
+    href: "/why-us/philosophy/",
     icon: Zap,
   },
   {
     name: "Architecture",
     desc: "Scalable system design",
-    href: "/why-us/architecture",
+    href: "/why-us/architecture/",
     icon: Box,
   },
 ];
@@ -105,13 +105,13 @@ export const navResources = [
   {
     name: "Blog",
     desc: "Latest AI news & insights",
-    href: "/blog",
+    href: "/blog/",
     icon: PenTool,
   },
   {
     name: "Faq",
     desc: "Common questions answered",
-    href: "/faq",
+    href: "/faq/",
     icon: HelpCircle,
   },
 ];
@@ -120,25 +120,25 @@ export const navCompany = [
   {
     name: "About us",
     desc: "Our mission and story",
-    href: "/about-us",
+    href: "/about-us/",
     icon: Info,
   },
   {
     name: "Leadership Team",
     desc: "The minds behind The Vertical AI",
-    href: "/team",
+    href: "/team/",
     icon: Users,
   },
   {
     name: "Careers",
     desc: "Join our growing team",
-    href: "/careers",
+    href: "/careers/",
     icon: Briefcase,
   },
   {
     name: "Support",
     desc: "24/7 technical assistance",
-    href: "/support",
+    href: "/support/",
     icon: LifeBuoy,
   },
 ];
@@ -505,7 +505,7 @@ export default function Header({ visible = true }: HeaderProps) {
                     <button
                       onClick={() => {
                         setMobileMenuOpen(false);
-                        router.push("/get-demo");
+                        router.push("/get-demo/");
                       }}
                       className="w-full py-2 sm:py-3 px-4 sm:px-5 rounded-2xl bg-primary text-white font-bold text-xs sm:text-base hover:!bg-none hover:!bg-black hover:-translate-y-1 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center shadow-xl hover:shadow-primary/20 cursor-pointer whitespace-nowrap"
                     >
@@ -851,7 +851,7 @@ export default function Header({ visible = true }: HeaderProps) {
           {/* Right: CTA & Mobile Toggle */}
           <div className="relative z-50 flex items-center gap-3 pointer-events-auto">
             <button
-              onClick={() => router.push("/get-demo")}
+              onClick={() => router.push("/get-demo/")}
               className="hidden sm:flex items-center gap-2 bg-primary text-white rounded-2xl px-5 py-2.5 text-base font-bold hover:!bg-none hover:!bg-black hover:-translate-y-1 hover:scale-105 active:scale-95 transition-all duration-300 shadow-xl hover:shadow-primary/20 cursor-pointer pointer-events-auto h-[44px] whitespace-nowrap"
             >
               Talk to an Expert <ArrowRight size={16} />

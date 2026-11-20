@@ -9,7 +9,7 @@ function LegacyBlogDetailRedirect() {
   const slug = searchParams.get("slug");
 
   useEffect(() => {
-    window.location.replace(slug ? `/blog/${slug}` : "/");
+    window.location.replace(slug ? `/blog/${slug}/` : "/");
   }, [slug]);
 
   return null;

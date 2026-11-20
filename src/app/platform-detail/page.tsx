@@ -8,7 +8,7 @@ import { useEffect } from "react";
 export default function PlatformDetailPage() {
   useEffect(() => {
     const slug = new URLSearchParams(window.location.search).get("slug");
-    window.location.replace(slug ? `/platform/${slug}` : "/platform");
+    window.location.replace(slug ? `/platform/${slug}/` : "/platform/");
   }, []);
 
   return null;

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { fetchCmsResource } from "@/lib/cms-api";
-import { SITE_URL } from "@/lib/site";
+import { sitePageUrl } from "@/lib/site";
 import { JsonLd, buildDefaultSchema } from "@/lib/json-ld";
 import FeatureClientPage from "./feature-client-page";
 
@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!pillar) return {};
   const title = pillar.metaTitle || pillar.heroBannerText || pillar.mainHeading;
   const description = pillar.metaDescription || pillar.introDescription;
-  const canonical = `${SITE_URL}/why-us/${slug}/`;
+  const canonical = sitePageUrl(`why-us/${slug}`);
   const ogImage = pillar.ogImageUrl || pillar.heroBannerImageUrl;
   return {
     title, description,

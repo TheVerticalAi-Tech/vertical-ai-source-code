@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { fetchCmsResource } from "@/lib/cms-api";
-import { SITE_URL } from "@/lib/site";
+import { sitePageUrl } from "@/lib/site";
 import { JsonLd, buildDefaultSchema } from "@/lib/json-ld";
 import IndustryDetailClient from "./IndustryDetailClient";
 
@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!row) return {};
   const title = row.metaTitle || row.name;
   const description = row.metaDescription || row.heroDescription;
-  const canonical = `${SITE_URL}/industry/${slug}`;
+  const canonical = sitePageUrl(`industry/${slug}`);
   const ogImage = row.ogImageUrl || row.heroImageUrl;
   return {
     title, description,

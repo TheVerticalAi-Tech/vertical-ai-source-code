@@ -199,14 +199,14 @@ export default function FeatureClientPage({ slug, initialData }: { slug: string;
 
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 pt-4 md:pt-6">
                             <Link 
-                                href="/get-demo"
+                                href="/get-demo/"
                                 className="w-full sm:w-auto py-3 md:py-3 px-5 md:px-5 bg-accent text-white rounded-2xl font-bold text-sm sm:text-base flex items-center justify-center gap-4 transition-all shadow-xl hover:-translate-y-1 active:scale-95 duration-300 pointer-events-auto"
                             >
                                 Request Full Documentation
                                 <ArrowRight className="w-5 h-5 md:w-6 md:h-6" />
                             </Link>
                             <Link 
-                                href="/why-us"
+                                href="/why-us/"
                                 className="w-full sm:w-auto py-3 md:py-3 px-5 md:px-5 bg-primary-foreground/10 hover:bg-primary-foreground/20 text-white border border-white/20 rounded-2xl font-bold text-sm sm:text-base transition-all backdrop-blur-md flex items-center justify-center active:scale-95 duration-300"
                             >
                                 View All Pillars
