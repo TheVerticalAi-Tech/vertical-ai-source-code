@@ -42,7 +42,7 @@ export default async function PlatformDetailPage({ params }: { params: Promise<{
   const row = await getPlatform(slug);
   return (
     <>
-      {row && <JsonLd data={row.schemaMarkup || JSON.stringify(buildDefaultSchema("platform", row))} />}
+      {row && <JsonLd data={row.schemaMarkup || JSON.stringify(buildDefaultSchema("platform", row))} canonicalUrl={sitePageUrl(`platform/${slug}`)} />}
       <PlatformDetailClient initialData={row} />
     </>
   );

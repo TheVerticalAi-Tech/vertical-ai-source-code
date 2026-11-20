@@ -42,7 +42,7 @@ export default async function FeaturePage({ params }: { params: Promise<{ slug: 
   const pillar = await getPillar(slug);
   return (
     <>
-      {pillar && <JsonLd data={pillar.schemaMarkup || JSON.stringify(buildDefaultSchema("whyFramework", pillar))} />}
+      {pillar && <JsonLd data={pillar.schemaMarkup || JSON.stringify(buildDefaultSchema("whyFramework", pillar))} canonicalUrl={sitePageUrl(`why-us/${slug}`)} />}
       <FeatureClientPage slug={slug} initialData={pillar} />
     </>
   );

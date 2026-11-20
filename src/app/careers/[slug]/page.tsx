@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { fetchCmsResource } from "@/lib/cms-api";
-import { SITE_URL, sitePageUrl } from "@/lib/site";
+import { sitePageUrl } from "@/lib/site";
 import JobDetailClient from "./JobDetailClient";
 
 async function getJob(slug: string) {
@@ -47,7 +47,7 @@ export default async function JobDetailPage({ params }: { params: Promise<{ slug
     title: job.title, description: job.description || job.title,
     datePosted: job.createdAt || undefined,
     employmentType: EMPLOYMENT_TYPE_MAP[String(job.type || "").toLowerCase()] || undefined,
-    hiringOrganization: { "@type": "Organization", name: "The Vertical AI", sameAs: SITE_URL },
+    hiringOrganization: { "@type": "Organization", name: "The Vertical AI", sameAs: sitePageUrl("") },
     jobLocation: job.location ? { "@type": "Place", address: { "@type": "PostalAddress", addressLocality: job.location } } : undefined,
   } : null;
 

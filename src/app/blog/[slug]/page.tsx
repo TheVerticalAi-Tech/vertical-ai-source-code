@@ -42,7 +42,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
   const post = await getPost(slug);
   return (
     <>
-      {post && <JsonLd data={post.schemaMarkup || JSON.stringify(buildDefaultSchema("blog", post))} />}
+      {post && <JsonLd data={post.schemaMarkup || JSON.stringify(buildDefaultSchema("blog", post))} canonicalUrl={sitePageUrl(`blog/${slug}`)} />}
       <BlogDetailClient initialData={post} />
     </>
   );

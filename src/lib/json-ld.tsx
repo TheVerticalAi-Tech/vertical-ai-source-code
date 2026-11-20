@@ -1,15 +1,42 @@
-import { SITE_URL, absoluteUrl } from "@/lib/site";
+import { absoluteUrl, sitePageUrl } from "@/lib/site";
 
 // Renders a JSON-LD <script> tag. `data` is a JSON string — either an admin's
 // own schemaMarkup value taken verbatim, or JSON.stringify(buildDefaultSchema(...)).
 // Re-parsing + re-stringifying guarantees well-formed output and lets us escape
 // "<" so admin-entered text can never break out of the script tag.
-export function JsonLd({ data }: { data: string | undefined | null }) {
+function setWebPageUrls(
+  value: unknown,
+  canonicalUrl: string,
+  siteRootUrl = `${new URL(canonicalUrl).origin}/`,
+): void {
+  if (Array.isArray(value)) {
+    value.forEach((item) => setWebPageUrls(item, canonicalUrl, siteRootUrl));
+    return;
+  }
+  if (!value || typeof value !== "object") return;
+
+  const schema = value as Record<string, unknown>;
+  const types = Array.isArray(schema["@type"]) ? schema["@type"] : [schema["@type"]];
+  for (const key of ["url", "@id", "sameAs", "mainEntityOfPage"]) {
+    const field = schema[key];
+    if (field === siteRootUrl.slice(0, -1)) schema[key] = siteRootUrl;
+    else if (Array.isArray(field)) {
+      schema[key] = field.map((item) => item === siteRootUrl.slice(0, -1) ? siteRootUrl : item);
+    }
+  }
+  if (types.includes("WebPage")) schema.url = canonicalUrl;
+
+  Object.values(schema).forEach((item) => setWebPageUrls(item, canonicalUrl, siteRootUrl));
+}
+
+export function JsonLd({ data, canonicalUrl }: { data: string | undefined | null; canonicalUrl: string }) {
   if (!data) return null;
 
   let safe: string;
   try {
-    safe = JSON.stringify(JSON.parse(data)).replace(/</g, "\\u003c");
+    const schema = JSON.parse(data);
+    setWebPageUrls(schema, canonicalUrl);
+    safe = JSON.stringify(schema).replace(/</g, "\\u003c");
   } catch {
     return null;
   }
@@ -113,7 +140,7 @@ export function buildDefaultSchema(type: SchemaPageType, record: any): Record<st
         "@context": "https://schema.org",
         "@type": "Organization",
         name: record.metaTitle || "The Vertical AI",
-        url: record.ogUrl || SITE_URL,
+        url: sitePageUrl(""),
         logo: absoluteUrl(record.ogImageUrl),
         description: record.metaDescription,
       });

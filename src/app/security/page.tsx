@@ -53,7 +53,7 @@ export default async function SecurityPolicy() {
 
   return (
     <div className="min-h-screen bg-white">
-      <JsonLd data={doc?.schemaMarkup || JSON.stringify(buildDefaultSchema("legal", doc || {}))} />
+      <JsonLd data={doc?.schemaMarkup || JSON.stringify(buildDefaultSchema("legal", doc || {}))} canonicalUrl={sitePageUrl("security")} />
       <Header visible={true} />
 
       <PageHero

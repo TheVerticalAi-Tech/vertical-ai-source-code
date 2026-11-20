@@ -53,7 +53,7 @@ export default async function PrivacyPolicy() {
 
   return (
     <div className="min-h-screen bg-white">
-      <JsonLd data={doc?.schemaMarkup || JSON.stringify(buildDefaultSchema("legal", doc || {}))} />
+      <JsonLd data={doc?.schemaMarkup || JSON.stringify(buildDefaultSchema("legal", doc || {}))} canonicalUrl={sitePageUrl("privacy-policy")} />
       <Header visible={true} />
 
       <PageHero

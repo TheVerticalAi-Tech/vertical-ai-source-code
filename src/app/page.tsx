@@ -22,7 +22,7 @@ export default async function Home() {
 
   return (
     <>
-      <JsonLd data={home.schemaMarkup || JSON.stringify(buildDefaultSchema("home", home))} />
+      <JsonLd data={home.schemaMarkup || JSON.stringify(buildDefaultSchema("home", home))} canonicalUrl={sitePageUrl("")} />
       <LandingPageClient />
     </>
   );

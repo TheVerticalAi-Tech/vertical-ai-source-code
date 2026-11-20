@@ -42,7 +42,7 @@ export default async function CaseStudyDetailPage({ params }: { params: Promise<
   const cs = await getCaseStudy(slug);
   return (
     <>
-      {cs && <JsonLd data={cs.schemaMarkup || JSON.stringify(buildDefaultSchema("caseStudy", cs))} />}
+      {cs && <JsonLd data={cs.schemaMarkup || JSON.stringify(buildDefaultSchema("caseStudy", cs))} canonicalUrl={sitePageUrl(`case-study/${slug}`)} />}
       <CaseStudyDetailClient initialData={cs} />
     </>
   );

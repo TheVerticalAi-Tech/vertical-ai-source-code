@@ -42,7 +42,7 @@ export default async function IndustryPage({ params }: { params: Promise<{ slug:
   const row = await getIndustry(slug);
   return (
     <>
-      {row && <JsonLd data={row.schemaMarkup || JSON.stringify(buildDefaultSchema("industry", row))} />}
+      {row && <JsonLd data={row.schemaMarkup || JSON.stringify(buildDefaultSchema("industry", row))} canonicalUrl={sitePageUrl(`industry/${slug}`)} />}
       <IndustryDetailClient initialData={row} />
     </>
   );
