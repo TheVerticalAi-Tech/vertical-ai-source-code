@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Header from "@/components/landing-page/header";
 import PageHero from "@/components/landing-page/page-hero";
 import LandingPageFooter from "@/components/landing-page/landing-page-footer";
@@ -30,31 +30,11 @@ interface WhyFrameworkPillar {
   results: { label: string; value: string }[];
 }
 
-export default function FeatureClientPage({ slug }: { slug: string }) {
-  const [feature, setFeature] = useState<WhyFrameworkPillar | null>(null);
-  const [notFoundState, setNotFoundState] = useState(false);
-
-  useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_CMS_API_URL}/api/public/why-framework`)
-      .then((res) => res.json())
-      .then((json) => {
-        const frameworks = Array.isArray(json?.frameworks) ? json.frameworks : [];
-        const found = frameworks.find((f: any) => f.slug === slug) || null;
-        if (found) {
-          setFeature(found);
-        } else {
-          setNotFoundState(true);
-        }
-      })
-      .catch(() => setNotFoundState(true));
-  }, [slug]);
-
-  if (notFoundState) {
-    return <div className="min-h-screen bg-white flex items-center justify-center text-gray-500">Pillar not found.</div>;
-  }
+export default function FeatureClientPage({ slug, initialData }: { slug: string; initialData: WhyFrameworkPillar | null }) {
+  const feature = initialData;
 
   if (!feature) {
-    return <div className="min-h-screen bg-white flex items-center justify-center text-gray-500">Loading...</div>;
+    return <div className="min-h-screen bg-white flex items-center justify-center text-gray-500">Pillar not found.</div>;
   }
 
   return (

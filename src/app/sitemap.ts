@@ -24,7 +24,7 @@ const STATIC_PAGES = [
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticEntries: MetadataRoute.Sitemap = STATIC_PAGES.map((path) => ({
-    url: path ? `${SITE_URL}/${path}` : `${SITE_URL}/`,
+    url: path ? `${SITE_URL}/${path}/` : `${SITE_URL}/`,
     lastModified: new Date(),
   }));
 
@@ -75,7 +75,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const pillarEntries: MetadataRoute.Sitemap = pillars
     .filter((p: any) => p.status === "published")
     .map((p: any) => ({
-      url: `${SITE_URL}/why-us/${p.slug}`,
+      url: `${SITE_URL}/why-us/${p.slug}/`,
       lastModified: p.updatedAt ? new Date(p.updatedAt) : new Date(),
     }));
 

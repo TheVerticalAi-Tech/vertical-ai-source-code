@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!pillar) return {};
   const title = pillar.metaTitle || pillar.heroBannerText || pillar.mainHeading;
   const description = pillar.metaDescription || pillar.introDescription;
-  const canonical = `${SITE_URL}/why-us/${slug}`;
+  const canonical = `${SITE_URL}/why-us/${slug}/`;
   const ogImage = pillar.ogImageUrl || pillar.heroBannerImageUrl;
   return {
     title, description,
@@ -43,7 +43,7 @@ export default async function FeaturePage({ params }: { params: Promise<{ slug: 
   return (
     <>
       {pillar && <JsonLd data={pillar.schemaMarkup || JSON.stringify(buildDefaultSchema("whyFramework", pillar))} />}
-      <FeatureClientPage slug={slug} />
+      <FeatureClientPage slug={slug} initialData={pillar} />
     </>
   );
 }
